@@ -7,6 +7,9 @@ const ManageUser = (props) => {
 
     const [showModalCreateUser, setShowModalCreateUser] = useState(false);
 
+    const handleShowHideModal = (value) => {
+        setShowModalCreateUser(value);
+    }
 
     return(
         <div className="manage-user-container">
@@ -21,7 +24,11 @@ const ManageUser = (props) => {
                 <div className="table-users-container">
                     Table users
                 </div>
-                <ModalCreateUser show = {showModalCreateUser} setShow = {setShowModalCreateUser}/>
+                <ModalCreateUser 
+                    show = {showModalCreateUser} 
+                    // setShow = {setShowModalCreateUser}
+                    setShow = {handleShowHideModal}
+                />
             </div>
         </div>
     )
