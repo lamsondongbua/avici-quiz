@@ -5,16 +5,20 @@ import TableUser from "./TableUser";
 import { useEffect, useState } from "react";
 import { getAllUsers } from "../../../services/apiServices";
 import ModalUpdateUser from "./ModalUpdateUser";
+import ModalViewUser from "./ModalViewUser";
+
 const ManageUser = (props) => {
 
     const [showModalCreateUser, setShowModalCreateUser] = useState(false);
     const [showModalUpdateUser, setShowModalUpdateUser] = useState(false);
+    const [showModalViewUser, setShowModalViewUser] = useState(false);
     const [dataUpdate, setDataUpdate] = useState({});
     // const handleShowHideModal = (value) => {
     //     setShowModalCreateUser(value);
     // }
     const [listUsers, setListUsers] = useState([])
 
+    const [ID, setID] = useState();
     
     useEffect(() =>{
         fetchListUsers();
@@ -33,6 +37,14 @@ const ManageUser = (props) => {
         setDataUpdate(user);
     }
 
+    const handleClickBtnView = (id) => {
+        setID(id);
+        setShowModalViewUser(true);
+    }
+    const resetUpdateData = () =>{
+        setDataUpdate({});
+    }
+
     return(
         <div className="manage-user-container">
             <div className="title">
@@ -47,6 +59,7 @@ const ManageUser = (props) => {
                     <TableUser 
                         listUsers = {listUsers}
                         handleClickBtnUpdate = {handleClickBtnUpdate}
+                        handleClickBtnView = {handleClickBtnView}
                     />
                 </div>
                 <ModalCreateUser 
@@ -59,6 +72,14 @@ const ManageUser = (props) => {
                     show = {showModalUpdateUser}
                     setShow = {setShowModalUpdateUser}
                     dataUpdate = {dataUpdate}
+                    fetchListUsers = {fetchListUsers}
+                    resetUpdateData = {resetUpdateData}
+                />
+                <ModalViewUser
+                    show = {showModalViewUser}
+                    setShow = {setShowModalViewUser}
+                    listUsers = {listUsers}
+                    ID = {ID}
                 />
             </div>
         </div>

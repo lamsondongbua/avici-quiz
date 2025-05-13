@@ -16,6 +16,17 @@ const getAllUsers = () => {
 }
 
 
+const putUpdateUser = (id,username, role, image) => {
+
+    const data = new FormData();
+    data.append('id',id);
+    data.append('username', username);
+    data.append('role', role);
+    data.append('userImage', image);
+    return instance.put('api/v1/participant', data);
+}
 
 
-export {postCreateNewUser, getAllUsers}
+
+
+export {postCreateNewUser, getAllUsers, putUpdateUser}

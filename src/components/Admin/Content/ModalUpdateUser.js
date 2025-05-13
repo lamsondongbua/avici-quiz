@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {FcPlus} from 'react-icons/fc';
 import {toast} from 'react-toastify';
-import { postCreateNewUser } from '../../../services/apiServices';
-
+import { putUpdateUser } from '../../../services/apiServices';
+import _ from 'lodash';
 const ModalUpdateUser = (props) => {
-    const {show, setShow, dataUpdate} = props;
+    const {show, setShow, dataUpdate, resetUpdateData} = props;
 
     const handleClose =() => {
         setShow(false)
@@ -16,6 +16,7 @@ const ModalUpdateUser = (props) => {
         setRole("USER");
         setImage("");
         setPreviewImage("");
+        resetUpdateData();
     };
 
     const [email,setEmail] = useState("");
@@ -25,7 +26,18 @@ const ModalUpdateUser = (props) => {
     const [image, setImage] = useState("");
     const [previewImage, setPreviewImage] = useState("");
 
-
+    useEffect(() =>{
+        if (!_.isEmpty(dataUpdate)){
+            //update dữ liệu vào các ô input trong bảng modalupdateuser
+            setEmail(dataUpdate.email);
+            setUsername(dataUpdate.username);
+            setRole(dataUpdate.role);
+            setImage("");
+            if (dataUpdate.image){
+                setPreviewImage(`data:image/jpeg;base64,${dataUpdate.image}`)
+            }
+        }
+    }, [dataUpdate])
 
     const validateEmail = (email) => {
         return String(email)
@@ -53,10 +65,6 @@ const ModalUpdateUser = (props) => {
             return;
         }
 
-        if (!password){
-            toast.error('Invalid password');
-            return;
-        }
 
         //post API
         // let data = {
@@ -77,7 +85,7 @@ const ModalUpdateUser = (props) => {
         // data.append('role', role);
         // data.append('userImage', image);
 
-        let data = await postCreateNewUser(email, password, username, role, image)
+        let data = await putUpdateUser(dataUpdate.id,username, role, image)
         console.log('tạo thành công');
         if (data && data.EC === 0 ){
             toast.success(data.EM);
@@ -107,11 +115,11 @@ const ModalUpdateUser = (props) => {
                 <form className="row g-3">
                     <div className="col-md-6">
                         <label className="form-label">Email</label>
-                        <input type="email" className="form-control" value={email} onChange={(event) => setEmail(event.target.value)} />
+                        <input type="email" className="form-control" value={email} disabled onChange={(event) => setEmail(event.target.value)} />
                     </div>
                     <div className="col-md-6">
                         <label className="form-label">Password</label>
-                        <input type="password" className="form-control" value={password} onChange={(event) =>setPassword(event.target.value)}/>
+                        <input type="password" className="form-control" value={password} disabled onChange={(event) =>setPassword(event.target.value)}/>
                     </div>
                     
                     <div className="col-md-6">
