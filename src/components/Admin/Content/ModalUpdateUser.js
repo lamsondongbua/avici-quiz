@@ -5,8 +5,8 @@ import {FcPlus} from 'react-icons/fc';
 import {toast} from 'react-toastify';
 import { postCreateNewUser } from '../../../services/apiServices';
 
-const ModalCreateUser = (props) => {
-    const {show, setShow} = props;
+const ModalUpdateUser = (props) => {
+    const {show, setShow, dataUpdate} = props;
 
     const handleClose =() => {
         setShow(false)
@@ -24,6 +24,8 @@ const ModalCreateUser = (props) => {
     const [role, setRole] = useState("USER");
     const [image, setImage] = useState("");
     const [previewImage, setPreviewImage] = useState("");
+
+
 
     const validateEmail = (email) => {
         return String(email)
@@ -86,6 +88,9 @@ const ModalCreateUser = (props) => {
             toast.error(data.EM);
         }
     }
+
+    
+
   return (
     <>
         <Modal 
@@ -96,7 +101,7 @@ const ModalCreateUser = (props) => {
             className='modal-add-user'
         >
             <Modal.Header closeButton>
-                <Modal.Title>Add new user</Modal.Title>
+                <Modal.Title>Update a user</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <form className="row g-3">
@@ -145,4 +150,4 @@ const ModalCreateUser = (props) => {
   );
 }
 
-export default ModalCreateUser;
+export default ModalUpdateUser;
