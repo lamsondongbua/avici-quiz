@@ -15,6 +15,13 @@
             .user-pagination{
                 display: flex;
                 justify-content: center;
+                //cố định thanh chuyển trang
+                position: fixed;
+                top:50%;
+                left: 50%;
+                width: auto;
+                height: auto;
+                margin-top: 320px;
             }
         }
     }

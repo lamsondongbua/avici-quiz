@@ -10,7 +10,7 @@ import ModalDeleteUser from "./ModalDeleteUser";
 import TableUserPaginate from "./TableUserPaginate";
 const ManageUser = (props) => {
     //đây là biến giới hạn bao nhiêu phần tử có trong 1 trang
-    const LIMIT_USER = 8;
+    const LIMIT_USER = 6;
     const [pageCount, setPageCount] = useState(0); 
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -28,9 +28,9 @@ const ManageUser = (props) => {
     const [dataDelete, setDataDelete] = useState({});
 
     //dùng cho ko phân trang
-    useEffect(() =>{
-        fetchListUsers();
-    }, []);
+    // useEffect(() =>{
+    //     fetchListUsers();
+    // }, []);
 
     //dùng cho phân trang
     useEffect(() =>{

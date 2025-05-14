@@ -2,7 +2,20 @@
     .header{
         height: 45px;
         text-align: right;
-        border: 1px solid red;
+        padding: 5px 100px 0 100px;
+
+        button{
+            padding: 3px 15px;
+            margin-left: 15px;
+            border-radius: 5px;
+            background: #f9f9f9;
+            border: 1px solid;
+
+            &:hover{
+                background-color: black;
+                color: whitesmoke;
+            }
+        }
     }
     .title{
         font-size: 25px;
@@ -27,6 +40,14 @@
             border-radius: 5px;
             color: white;
             background-color: black;
+        }
+        .back{
+            cursor: pointer;
+        }
+        .forgot-password{
+            text-decoration: underline;
+            text-underline-offset: 1px; 
+            cursor: pointer;
         }
     }
 }
