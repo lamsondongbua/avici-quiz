@@ -39,4 +39,8 @@ const postLogin = (userEmail, userPassword) =>{
     return instance.post(`/api/v1/login`, {email: userEmail, password: userPassword})
 }
 
-export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin}
+const postRegister = (email, password, username) => {
+    return instance.post(`/api/v1/register`, {email, password, username})
+}
+
+export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister}
