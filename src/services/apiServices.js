@@ -36,7 +36,7 @@ const getUserWithPaginate = (page, limit) => {
 }
 
 const postLogin = (userEmail, userPassword) =>{
-    return instance.post(`/api/v1/login`, {email: userEmail, password: userPassword})
+    return instance.post(`/api/v1/login`, {email: userEmail, password: userPassword, delay: 5000})
 }
 
 const postRegister = (email, password, username) => {
