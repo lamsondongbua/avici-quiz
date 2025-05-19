@@ -1,9 +1,21 @@
 .detail-quiz-container{
     display: flex;
     gap: 20px;
+    padding: 50px;
     .left-content{
         width: 70%;
         border: 1px solid red;
+
+        .title{
+            font-size: 30px;
+            font-weight: 600;
+        }
+        .q-content{
+            .question{
+                font-size: 20px;
+                font-weight: 600;
+            }
+        }
     }
     .right-content{
         width: 30%;
