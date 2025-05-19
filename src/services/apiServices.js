@@ -43,4 +43,8 @@ const postRegister = (email, password, username) => {
     return instance.post(`/api/v1/register`, {email, password, username})
 }
 
-export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister}
+const getQuizByUser = () =>{
+    return instance.get('/api/v1/quiz-by-participant')
+}
+
+export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister,getQuizByUser}

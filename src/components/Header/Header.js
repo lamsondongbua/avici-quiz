@@ -30,7 +30,7 @@ const Header = () => {
             <NavLink to="/admins" className='nav-link'>Admin</NavLink>
           </Nav>
           <Nav>
-            {/* {isAuthenticated === false ? */}
+            {isAuthenticated === false ?
               <>
                 <button className='btn-login' onClick={() => handleLogin()}>Log in</button>
                 <button className='btn-signup' onClick={() => handleRegister()}>Sign up</button>
@@ -40,7 +40,7 @@ const Header = () => {
                 <NavDropdown.Item >Log out</NavDropdown.Item>
                 <NavDropdown.Item >Profile</NavDropdown.Item>
               </NavDropdown>
-            {/* } */}
+            }
           </Nav>
         </Navbar.Collapse>
       </Container>
