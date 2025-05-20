@@ -28,11 +28,14 @@ const DetailQuiz = (props) => {
                 .map((value,key) =>{
                     let answers = [];
                     let questionDescription, image = null;
+                    //item là 1 bản ghi trong backend, chứa 1 câu hỏi và đáp án
                     value.forEach((item, index) =>{
                         if (index === 0){
                             questionDescription = item.description;
                             image = item.image;
                         }
+                        //item.answers đại diện cho 1 đáp án
+                        item.answers.isSelected = false;
                         answers.push(item.answers);
                         // console.log("item answers ",item.answers)
                     });
@@ -60,6 +63,10 @@ const DetailQuiz = (props) => {
         if (dataQuiz && dataQuiz.length > currentQuestion + 1){
             setCurrentQuestion(currentQuestion+1);
         }
+        
+    }
+    const handleFinish = () => {
+
     }
 
     return (
@@ -78,6 +85,7 @@ const DetailQuiz = (props) => {
                 <div className="footer">
                     <button className="btn btn-secondary" onClick={() => handlePrev()}>Prev</button>
                     <button className="btn btn-primary" onClick={() => handleNext()}>Next</button>
+                    <button className="btn btn-warning" onClick={() => handleFinish()}>Finish</button>
                 </div>
             </div>
             <div className="right-content">
@@ -86,5 +94,6 @@ const DetailQuiz = (props) => {
         </div>
     )
 }
+
 
 export default DetailQuiz;
