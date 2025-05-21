@@ -31,7 +31,7 @@ const Question = (props) =>{
                         return (
                             <div key={`answer-${index}`} className='a-child'>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" onChange={(e) =>handleHandleCheckbox(e, a.id,data.questionId)}/>
+                                    <input checked={a.isSelected} className="form-check-input" type="checkbox" onChange={(e) =>handleHandleCheckbox(e, a.id,data.questionId)}/>
                                     <label className="form-check-label">
                                         {a.description}
                                     </label>

@@ -51,4 +51,9 @@ const getDataQuiz = (id) =>{
     return instance.get(`/api/v1/questions-by-quiz?quizId=${id}`);
 }
 
-export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister,getQuizByUser, getDataQuiz}
+const postSubmitQuiz = (data) => {
+    //truyền theo kiểu raw
+    return instance.post(`/api/v1/quiz-submit`, {...data})
+}
+
+export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister,getQuizByUser, getDataQuiz, postSubmitQuiz}

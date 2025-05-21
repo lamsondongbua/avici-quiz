@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { getDataQuiz } from "../../services/apiServices";
+import { getDataQuiz, postSubmitQuiz } from "../../services/apiServices";
 import _ from 'lodash'
 import './DetailQuiz.scss'
 import Question from "./Question";
@@ -67,23 +67,72 @@ const DetailQuiz = (props) => {
     }
 
     const handleCheckbox = (answerId, questionId) => {
-        //sao chép dataQuiz
+        //tạo bản sao dataQuiz tránh thay đổi trực tiếp state
         let dataQuizClone = _.cloneDeep(dataQuiz);
+        //tìm câu hỏi tương ứng trong mảng bản sao
         let question = dataQuizClone.find(item => Number(item.questionId) === Number(questionId))
         if (question) {
             console.log('q: ',question);
             if (question && question.answers){
-                let b = question.answerId.map(answer => {
+                //lặp qua các đáp án, đáp án nào mà được chọn thì cập nhật isSelected là được nhấn
+                question.answers = question.answers.map(answer => {
                     if (Number(answer.id) === Number(answerId)){
-                        answer.isSelected = true;
+                        answer.isSelected = !answer.isSelected;
                     }
                     return answer;
                 })
+                // console.log(question.answers)
             }
-        }
+            //Cập nhật các phần tử trong mảng 
+            let index = dataQuizClone.findIndex (item => Number(item.questionId) === Number(questionId))
+            if (index > -1){
+                dataQuizClone[index] = question;
+                //cập nhật lại state để render lại ra giao diện
+                setDataQuiz(dataQuizClone);
+            }
+        }   
     }
-    const handleFinish = () => {
+    const handleFinish = async() => {
+        console.log('đây là data trước khi submit', dataQuiz);
+        //đây là form data cần build để gửi về server
+        let payload = {
+            quizId: Number(quizId),
+            answers: []
+        }
 
+        let answers = [];
+        if (dataQuiz && dataQuiz.length > 0){
+            dataQuiz.forEach(question => {
+                let questionId = question.questionId;
+                let userAnswerId  = [];
+
+                //lấy các isSelected = true cho vàoo form
+                question.answers.forEach(a => {
+                    if(a.isSelected === true){
+                        userAnswerId.push(a.id)
+                    }
+                })
+                answers.push({
+                    questionId: Number(questionId),
+                    userAnswerId: userAnswerId
+                })
+
+            })
+            //cập nhật answers
+            payload.answers = answers;
+            //kiểm tra lại form 
+            console.log("final payload: ", payload);
+            
+            //đẩy lên API
+            let response = await postSubmitQuiz(payload);
+            console.log('check response: ',response); 
+            if (response && response.EC === 0){
+
+            }
+            else{
+                alert('Something wrong');
+            }    
+        }
     }
 
     return (
