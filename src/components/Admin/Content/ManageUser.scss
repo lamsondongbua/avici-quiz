@@ -44,8 +44,34 @@
     }
 }
 
-.modal-delete-user{
-    .modal-content{
+// .modal-delete-user{
+//     //2 dòng dưới là CSS Dũng tự thêm
+//     display: flex;
+//     justify-content: center;
+//     .modal-content{
+//         width: 650px;
+//     }
+// }
+
+
+.modal-delete-user {
+    display: flex;
+    justify-content: center;
+
+    .modal-content {
         width: 650px;
+        animation: fadeInScale 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }

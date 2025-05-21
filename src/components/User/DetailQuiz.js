@@ -4,6 +4,7 @@ import { getDataQuiz, postSubmitQuiz } from "../../services/apiServices";
 import _ from 'lodash'
 import './DetailQuiz.scss'
 import Question from "./Question";
+import ModalResult from './ModalResult'
 const DetailQuiz = (props) => {
     //lấy tham số trên URL
     const params = useParams();
@@ -12,6 +13,10 @@ const DetailQuiz = (props) => {
     // console.log(location)
     const [dataQuiz, setDataQuiz] = useState([]);
     const [currentQuestion, setCurrentQuestion] = useState(0);
+
+
+    const [isShowModalResult, setIsShowModalResult] = useState(false);
+    const [dataModalResult, setDataModalResult] = useState({})
 
     useEffect(() =>{
         fetchQuestions();
@@ -127,7 +132,12 @@ const DetailQuiz = (props) => {
             let response = await postSubmitQuiz(payload);
             console.log('check response: ',response); 
             if (response && response.EC === 0){
-
+                setDataModalResult({
+                   countCorrect: response.DT.countCorrect,
+                   countTotal: response.DT.countTotal,
+                   quizData: response.DT.quizData
+                })
+                setIsShowModalResult(true);
             }
             else{
                 alert('Something wrong');
@@ -157,6 +167,12 @@ const DetailQuiz = (props) => {
             <div className="right-content">
                 count down
             </div>
+            <ModalResult
+                show = {isShowModalResult}
+                setShow = {setIsShowModalResult}
+                dataModalResult = {dataModalResult}
+
+            />
         </div>
     )
 }

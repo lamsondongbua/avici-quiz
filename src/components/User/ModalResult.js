@@ -3,9 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 const ModalResult = (props) => {
-    const {show, setShow} = props;
+    const {show, setShow, dataModalResult} = props;
 
     const handleClose = () => setShow(false);
+    //check data cho modal result
+    console.log(dataModalResult);
 
     return (
         <>
@@ -16,9 +18,16 @@ const ModalResult = (props) => {
                 backdrop= "static"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Confirm Delete This User?</Modal.Title>
+                    <Modal.Title>Your Result...</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Are you sure to delete the user who you selected </Modal.Body>
+                <Modal.Body>
+                    <div>
+                        Total Questions: <b>{dataModalResult.countTotal}</b>
+                    </div>
+                    <div>
+                        Total Correct Answers: <b>{dataModalResult.countCorrect} </b>
+                    </div>
+                </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Show Answers
