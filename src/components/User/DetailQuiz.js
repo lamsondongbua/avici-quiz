@@ -65,6 +65,23 @@ const DetailQuiz = (props) => {
         }
         
     }
+
+    const handleCheckbox = (answerId, questionId) => {
+        //sao chép dataQuiz
+        let dataQuizClone = _.cloneDeep(dataQuiz);
+        let question = dataQuizClone.find(item => Number(item.questionId) === Number(questionId))
+        if (question) {
+            console.log('q: ',question);
+            if (question && question.answers){
+                let b = question.answerId.map(answer => {
+                    if (Number(answer.id) === Number(answerId)){
+                        answer.isSelected = true;
+                    }
+                    return answer;
+                })
+            }
+        }
+    }
     const handleFinish = () => {
 
     }
@@ -80,7 +97,7 @@ const DetailQuiz = (props) => {
                     <img/>
                 </div>
                 <div className="q-content">
-                    <Question currentQuestion = {currentQuestion} data={dataQuiz && dataQuiz.length > 0 ? dataQuiz[currentQuestion] : []}/>
+                    <Question handleCheckbox = {handleCheckbox} currentQuestion = {currentQuestion} data={dataQuiz && dataQuiz.length > 0 ? dataQuiz[currentQuestion] : []}/>
                 </div>
                 <div className="footer">
                     <button className="btn btn-secondary" onClick={() => handlePrev()}>Prev</button>

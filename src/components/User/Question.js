@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 const Question = (props) =>{
-    const {data, currentQuestion} = props;
+    const {data, currentQuestion, handleCheckbox} = props;
     if (_.isEmpty(data)){
         return (
             <>
@@ -9,9 +9,10 @@ const Question = (props) =>{
         )
     }
 
-    const handleCheckbox = (e,id) =>{
+    const handleHandleCheckbox = (e,aId,qId) =>{
         console.log('check',e.target.checked)
-        console.log('id', id);
+        console.log('id', aId,qId);
+        handleCheckbox(aId,qId);
 
     }
 
@@ -30,7 +31,7 @@ const Question = (props) =>{
                         return (
                             <div key={`answer-${index}`} className='a-child'>
                                 <div className="form-check">
-                                    <input className="form-check-input" type="checkbox" onChange={(e) =>handleCheckbox(e, `${a.id}-q${data.questionId}`)}/>
+                                    <input className="form-check-input" type="checkbox" onChange={(e) =>handleHandleCheckbox(e, a.id,data.questionId)}/>
                                     <label className="form-check-label">
                                         {a.description}
                                     </label>
