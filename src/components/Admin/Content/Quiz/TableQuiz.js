@@ -18,6 +18,8 @@ const TableQuiz = (props) => {
     }
 
     return (
+        <>
+        <div className="mt-2"><b>List Quizzes</b></div>
         <div>
             <table className="table table-striped table-info table-hover mt-5">
                 <thead>
@@ -49,6 +51,7 @@ const TableQuiz = (props) => {
                 </tbody>
             </table>
         </div>
+        </>
     )
 }
 
