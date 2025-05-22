@@ -20,7 +20,9 @@ const Admin  = (props) => {
 
                 <PerfectScrollbar>
                     <div className="admin-main">
-                        <Outlet/>
+                        <PerfectScrollbar>
+                            <Outlet/>
+                        </PerfectScrollbar>
                     </div>
                 </PerfectScrollbar>
             </div>

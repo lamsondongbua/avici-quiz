@@ -14,6 +14,7 @@ const options = [
 ]
 
 const ManageQuiz = (props) => {
+    const [reloadList, setReloadList] = useState(false);
     const [namequiz, setNameQuiz] = useState('');
     const [description, setDescription] = useState('');
     const [type, setType] = useState('EASY');
@@ -38,6 +39,7 @@ const ManageQuiz = (props) => {
         // console.log('response after post: ', response)
         if (response && response.EC === 0){
             toast.success(response.EM)
+            setReloadList(prev => !prev);
         }
         else{
             toast.error(response.EM)
@@ -114,7 +116,7 @@ const ManageQuiz = (props) => {
                 </Accordion.Item>
             </Accordion>
             <div className="list-detail">
-                <TableQuiz/>
+                <TableQuiz reloadList={reloadList}/>
             </div>
         </div>
     )
