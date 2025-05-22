@@ -17,7 +17,7 @@ const getAllUsers = () => {
 
 
 const putUpdateUser = (id,username, role, image) => {
-
+    // dùng với form data trên POSTMAN
     const data = new FormData();
     data.append('id',id);
     data.append('username', username);
@@ -52,8 +52,20 @@ const getDataQuiz = (id) =>{
 }
 
 const postSubmitQuiz = (data) => {
-    //truyền theo kiểu raw
+    //truyền theo kiểu raw trên POSTMAN
     return instance.post(`/api/v1/quiz-submit`, {...data})
 }
 
-export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister,getQuizByUser, getDataQuiz, postSubmitQuiz}
+const postCreateNewQuiz = (description, namequiz, difficulty,quizImage) =>{
+    const data = new FormData();
+    data.append('description',description);
+    data.append('name', namequiz);
+    data.append('difficulty', difficulty);
+    data.append('quizImage', quizImage);
+    return instance.post('api/v1/quiz', data);
+}
+
+const getAllQuizForAdmin = () => {
+    return instance.get(`/api/v1/quiz/all`);
+}
+export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister,getQuizByUser, getDataQuiz, postSubmitQuiz, postCreateNewQuiz, getAllQuizForAdmin}
