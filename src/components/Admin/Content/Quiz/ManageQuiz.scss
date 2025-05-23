@@ -27,3 +27,10 @@
         max-height: 100%;
     }
 }
+.upload-image-hover{
+    &:hover{
+        background-color: #ccc;
+        font-weight: 600;
+        border-radius: 5px;
+    }
+}

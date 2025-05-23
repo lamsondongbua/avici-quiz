@@ -139,7 +139,7 @@ const ModalUpdateQuiz = (props) => {
                     </div>
 
                     <div className='col-md-12'>
-                        <label className='form-label label-upload' htmlFor='labelUpload'> <FcPlus/> Upload File Image</label>
+                        <label className='form-label label-upload upload-image-hover' htmlFor='labelUpload'> <FcPlus/> Upload File Image</label>
                         <input type='file' id='labelUpload' hidden onChange={(event) => handleUploadImage(event)}/>
                     </div>
 
