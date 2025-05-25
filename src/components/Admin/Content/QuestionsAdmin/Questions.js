@@ -19,11 +19,11 @@ const Questions = (props) => {
         [
             {
                 id: uuidv4(),
-                description: 'question 1',
+                description: '',
                 imageFile: '',
                 imageName: '',
                 answersCreated: [
-                    {id: uuidv4(), description: 'answer A for question 1', isCorrect: false},
+                    {id: uuidv4(), description: '', isCorrect: false},
                 ]
             }
         ]
@@ -96,14 +96,25 @@ const Questions = (props) => {
     const handleCheckBox = (type,answerId,questionId, value) => {
         let questionClone = _.cloneDeep(questions);
         let index = questionClone.findIndex(item => item.id === questionId);
-    
+        if (index > -1) {
+            questionClone[index].answersCreated = questionClone[index].answersCreated.map(answer => {
+                if (answer.id === answerId){
+                    if (type === 'CHECKBOX'){
+                        answer.isCorrect = value;
+                    }
+                    if (type === 'INPUT'){
+                        answer.description = value;
+                    }
+                }
+                return answer;
+            })
+            setQuestions(questionClone);
+        }
     }
     
-
-    const handleOnChangeForAnswer = () => {
+    const handleSubmitQuestionForQuiz = () => {
         
     }
-    
     return (
         <div className="questions-container">
             <div className="title">
@@ -174,7 +185,7 @@ const Questions = (props) => {
                                                         className="form-control" 
                                                         placeholder='Create Your Description'
                                                         value={answer.description}
-                                                        onChange={(e) => handleOnChangeForAnswer('INPUT',answer.id,question.id,e.target.value)}
+                                                        onChange={(e) => handleCheckBox('INPUT',answer.id,question.id,e.target.value)}
                                                     />
                                                     <label>Answer {index+1}</label>
                                                 </div>
@@ -195,6 +206,17 @@ const Questions = (props) => {
                             </div>
                         )
                     })
+                }
+                {
+                    questions && questions.length > 0 && 
+                    <div>
+                        <button
+                            onClick={() => handleSubmitQuestionForQuiz()} 
+                            className='btn btn-dark'
+                        >
+                            Save Questions
+                        </button>
+                    </div>
                 }
 
             </div>
