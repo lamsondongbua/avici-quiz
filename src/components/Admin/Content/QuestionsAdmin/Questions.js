@@ -70,6 +70,39 @@ const Questions = (props) => {
             setQuestions(questionClone);
         }
     }
+    //lấy value câu hỏi từ người dùng nhập
+    const handleOnChangeForQuestion = (type, questionId, value) => {
+        if (type === 'QUESTION'){
+            let questionClone = _.cloneDeep(questions);
+            let index = questionClone.findIndex(item => item.id === questionId);
+            if (index > -1){
+                questionClone[index].description = value;
+                setQuestions(questionClone);
+            }
+        }
+    }
+    //lấy value ảnh từ người dùng upload
+    const handleOnChangeFileQuestion = (questionId, event) => {
+        let questionClone = _.cloneDeep(questions);
+        let index = questionClone.findIndex(item => item.id === questionId);
+        if (index > -1 && event.target && event.target.files && event.target.files[0]){
+            questionClone[index].imageFile = event.target.files[0];
+            // console.log(event.target.files[0]);
+            questionClone[index].imageName = event.target.files[0].name;
+            setQuestions(questionClone);
+        }
+    }
+
+    const handleCheckBox = (type,answerId,questionId, value) => {
+        let questionClone = _.cloneDeep(questions);
+        let index = questionClone.findIndex(item => item.id === questionId);
+    
+    }
+    
+
+    const handleOnChangeForAnswer = () => {
+        
+    }
     
     return (
         <div className="questions-container">
@@ -101,16 +134,16 @@ const Questions = (props) => {
                                             className="form-control" 
                                             placeholder='Create Your Description'
                                             value={question.description}
-                                            // onChange={(e) => setDescription(e.target.value)}
+                                            onChange={(e) => handleOnChangeForQuestion('QUESTION', question.id,e.target.value)}
                                         />
                                         <label>Create Description For Your Question {index + 1}</label>
                                     </div>
                                     <div className='group-upload'>
-                                        <label>
+                                        <label htmlFor={`${question.id}`}>
                                             <RiImageAddFill className='label-up'/>
                                         </label>
-                                        <input type='file' hidden/>
-                                        <span>No file is uploaded</span>
+                                        <input id={`${question.id}`} type='file' onChange={(e) => handleOnChangeFileQuestion(question.id, e)} hidden/>
+                                        <span>{question.imageName ? question.imageName : 'No file is uploaded'}</span>
                                     </div>
                                     <div className='btn-add'>
                                         <span onClick={() => handleAddRemoveQuestion('ADD', '')}>
@@ -132,8 +165,8 @@ const Questions = (props) => {
                                                 <input
                                                     className='form-check-input iscorrect'
                                                     type='checkbox'
-                                                    
-                                                    
+                                                    checked = {answer.isCorrect}
+                                                    onChange={(event) => handleCheckBox('CHECKBOX', answer.id, question.id, event.target.checked)}
                                                 />
                                                 <div className="form-floating answer-name ">
                                                     <input 
@@ -141,7 +174,7 @@ const Questions = (props) => {
                                                         className="form-control" 
                                                         placeholder='Create Your Description'
                                                         value={answer.description}
-                                                        // onChange={(e) => setDescription(e.target.value)}
+                                                        onChange={(e) => handleOnChangeForAnswer('INPUT',answer.id,question.id,e.target.value)}
                                                     />
                                                     <label>Answer {index+1}</label>
                                                 </div>
