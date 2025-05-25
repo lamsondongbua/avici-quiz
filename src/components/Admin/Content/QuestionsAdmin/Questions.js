@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Select from 'react-select'
 import './Questions.scss'
+import { getAllQuizForAdmin } from "../../../../services/apiServices";
 import {BsFillPatchPlusFill,BsPatchMinusFill} from 'react-icons/bs';
 import {AiFillPlusSquare, AiOutlineMinusCircle} from 'react-icons/ai';
 import {RiImageAddFill} from 'react-icons/ri';
 import {v4 as uuidv4} from 'uuid';
+import Lightbox from 'react-awesome-lightbox';
 import _ from 'lodash';
 const Questions = (props) => {
     const options = [
@@ -30,6 +32,35 @@ const Questions = (props) => {
     )
     //check form question
     // console.log('question dạng: ', questions);
+
+    const [isPreviewImage, setIsPreviewImage] = useState(false);
+    const [listQuiz, setListQuiz] = useState([]);
+
+    useEffect(() => {
+        fetchQuiz();
+    },[]);
+    
+    const fetchQuiz = async() => {
+        let response = await getAllQuizForAdmin();
+        //check response sau khi get
+        console.log('response is got by API: ', response);
+        if (response && response.EC === 0){
+            let newQuiz = response.DT.map(item =>{
+                return {
+                    value: item.id,
+                    label: item.description
+                }
+            })
+            
+            setListQuiz(newQuiz);
+        }
+    
+    }
+    //tạo data bên ngoài vòng lặp map để lấy question => file ảnh
+    const [dataImagePreview,setDataImagePreview] = useState({
+        title: '',
+        url: ''
+    })
 
     const handleAddRemoveQuestion = (type,id) => {
         //check type và id xem có hiện ko?
@@ -115,6 +146,20 @@ const Questions = (props) => {
     const handleSubmitQuestionForQuiz = () => {
         
     }
+
+    //hàm xử lí hiển thị ảnh preview
+    const handlePreviewImage = (questionId) => {
+        let questionClone = _.cloneDeep(questions);
+        let index = questionClone.findIndex(item => item.id === questionId);
+        if (index > -1){
+            setDataImagePreview({
+                url: URL.createObjectURL(questionClone[index].imageFile),
+                title: questionClone[index].imageName
+            })
+            setIsPreviewImage(true);
+        }
+    }
+
     return (
         <div className="questions-container">
             <div className="title">
@@ -127,7 +172,7 @@ const Questions = (props) => {
                     <Select
                         value={selectedQuiz}
                         onChange={setSelectedQuiz}
-                        options={options}
+                        options={listQuiz}                        
                     />
                 </div>
                 <div className='mt-3 mb-2'>
@@ -154,7 +199,7 @@ const Questions = (props) => {
                                             <RiImageAddFill className='label-up'/>
                                         </label>
                                         <input id={`${question.id}`} type='file' onChange={(e) => handleOnChangeFileQuestion(question.id, e)} hidden/>
-                                        <span>{question.imageName ? question.imageName : 'No file is uploaded'}</span>
+                                        <span>{question.imageName ? <span style={{cursor:'pointer'}} onClick={() => handlePreviewImage(question.id)}>{question.imageName}</span> : 'No file is uploaded'}</span>
                                     </div>
                                     <div className='btn-add'>
                                         <span onClick={() => handleAddRemoveQuestion('ADD', '')}>
@@ -218,9 +263,13 @@ const Questions = (props) => {
                         </button>
                     </div>
                 }
-
             </div>
+
+            {isPreviewImage === true && 
+                <Lightbox image={dataImagePreview.url} onClose={() =>setIsPreviewImage(false)} title={dataImagePreview.title}></Lightbox>
+            }
         </div>
+
     )
 }
 
