@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 import Select from 'react-select'
 import './Questions.scss'
 import { getAllQuizForAdmin } from "../../../../services/apiServices";
@@ -8,15 +8,9 @@ import {RiImageAddFill} from 'react-icons/ri';
 import {v4 as uuidv4} from 'uuid';
 import Lightbox from 'react-awesome-lightbox';
 import _ from 'lodash';
+import { postCreateNewAnswerForQuestion, postCreateNewQuestionForQuiz } from '../../../../services/apiServices';
 const Questions = (props) => {
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-    ];
-
     const [selectedQuiz, setSelectedQuiz] = useState({});
-    
     const [questions, setQuestions] = useState(
         [
             {
@@ -48,7 +42,7 @@ const Questions = (props) => {
             let newQuiz = response.DT.map(item =>{
                 return {
                     value: item.id,
-                    label: item.description
+                    label: `${item.id}. ${item.description}`
                 }
             })
             
@@ -143,8 +137,22 @@ const Questions = (props) => {
         }
     }
     
-    const handleSubmitQuestionForQuiz = () => {
+    const handleSubmitQuestionForQuiz = async () => {
+        //validate
         
+        //submit question
+        //Promise.all đảm bảo chạy hết tất cả các lần lặp r mới trả về kết quả (đảm bảo API gọi về được)
+        await Promise.all(questions.map(async (question) => {
+            const q = await postCreateNewQuestionForQuiz(Number(selectedQuiz.value), question.description, question.imageFile);
+            //lặp tiếp để lấy answer
+            //submit answer
+            await Promise.all(question.answersCreated.map(async(answer) => {
+                await postCreateNewAnswerForQuestion(
+                    answer.description, answer.isCorrect, q.DT.id
+                )
+            }))
+            console.log("check q: ", q);
+        }))
     }
 
     //hàm xử lí hiển thị ảnh preview
@@ -170,6 +178,7 @@ const Questions = (props) => {
                 <div className='col-6 form-group'>
                     <label className='mb-2'>Select Quiz: </label>
                     <Select
+                        className='z-indexx'
                         value={selectedQuiz}
                         onChange={setSelectedQuiz}
                         options={listQuiz}                        
