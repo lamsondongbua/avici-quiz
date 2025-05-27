@@ -8,22 +8,25 @@ import {RiImageAddFill} from 'react-icons/ri';
 import {v4 as uuidv4} from 'uuid';
 import Lightbox from 'react-awesome-lightbox';
 import _ from 'lodash';
+import {toast} from 'react-toastify'
 import { postCreateNewAnswerForQuestion, postCreateNewQuestionForQuiz } from '../../../../services/apiServices';
+import { VscCheckAll } from "react-icons/vsc";
+
+
 const Questions = (props) => {
     const [selectedQuiz, setSelectedQuiz] = useState({});
-    const [questions, setQuestions] = useState(
-        [
-            {
-                id: uuidv4(),
-                description: '',
-                imageFile: '',
-                imageName: '',
-                answersCreated: [
-                    {id: uuidv4(), description: '', isCorrect: false},
-                ]
-            }
-        ]
-    )
+    const initQuestions = [
+        {
+            id: uuidv4(),
+            description: '',
+            imageFile: '',
+            imageName: '',
+            answersCreated: [
+                {id: uuidv4(), description: '', isCorrect: false},
+            ]
+        }
+    ]
+    const [questions, setQuestions] = useState(initQuestions);
     //check form question
     // console.log('question dạng: ', questions);
 
@@ -139,20 +142,72 @@ const Questions = (props) => {
     
     const handleSubmitQuestionForQuiz = async () => {
         //validate
+        if (_.isEmpty(selectedQuiz)){
+            toast.error('Please choose a Quiz!')
+            return;
+        }
+
+        for (let i = 0; i < questions.length; i++) {
+            const q = questions[i];
+            const questionNumber = i + 1;
+
+        // Validate mô tả câu hỏi
+            if (!q.description || q.description.trim() === '') {
+                toast.error(`Question ${questionNumber}: Description is required`);
+                return;
+            }
+
+            // Validate số lượng câu trả lời
+            if (!q.answersCreated || q.answersCreated.length < 2) {
+                toast.error(`Question ${questionNumber}: At least two answers are required`);
+                return;
+            }
+            let hasCorrect = false;
+            for (let j = 0; j < q.answersCreated.length; j++) {
+                const a = q.answersCreated[j];
+                if (a.isCorrect) {
+                    hasCorrect = true;
+                }
+            }
+            if (!hasCorrect) {
+                toast.error(`Question ${questionNumber}: At least one correct answer is required`);
+                return;
+            }
+        }
+
+
         
         //submit question
-        //Promise.all đảm bảo chạy hết tất cả các lần lặp r mới trả về kết quả (đảm bảo API gọi về được)
-        await Promise.all(questions.map(async (question) => {
-            const q = await postCreateNewQuestionForQuiz(Number(selectedQuiz.value), question.description, question.imageFile);
-            //lặp tiếp để lấy answer
-            //submit answer
-            await Promise.all(question.answersCreated.map(async(answer) => {
+        //CÁCH 1: DÙNG PROMISE.ALL chạy song song API
+        //Promise.all đảm bảo chạy được hết tất cả các lần lặp r mới trả về kết quả (đảm bảo API gọi về được full)
+        // await Promise.all(questions.map(async (question) => {
+        //     const q = await postCreateNewQuestionForQuiz(Number(selectedQuiz.value), question.description, question.imageFile);
+        //     //lặp tiếp để lấy answer
+        //     //submit answer
+        //     await Promise.all(question.answersCreated.map(async(answer) => {
+        //         await postCreateNewAnswerForQuestion(
+        //             answer.description, answer.isCorrect, q.DT.id
+        //         )
+        //     }))
+        //     console.log("check q: ", q);
+        // }))
+
+        //CÁCH 2: DÙNG FOR OF + AWAIT chạy tuần tự
+        for (const question of questions){
+            const  q = await postCreateNewQuestionForQuiz(Number(selectedQuiz.value), question.description, question.imageFile);
+            for (const answer of question.answersCreated){
                 await postCreateNewAnswerForQuestion(
                     answer.description, answer.isCorrect, q.DT.id
                 )
-            }))
-            console.log("check q: ", q);
-        }))
+            }
+        }
+        toast.success(
+            <div>
+                <span><VscCheckAll/> Congratulate! Created Successfully (^-^)</span>
+            </div>
+        )
+        setQuestions(initQuestions);
+
     }
 
     //hàm xử lí hiển thị ảnh preview

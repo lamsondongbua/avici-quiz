@@ -112,12 +112,27 @@ const ManageQuiz = (props) => {
                                 </div>
                             </fieldset>
                         </div>
+                        <div className="list-detail">
+                            <TableQuiz reloadList={reloadList}/>
+                        </div>
+                    </Accordion.Body>
+                </Accordion.Item>
+
+
+                <Accordion.Item eventKey='1'>
+                    <Accordion.Header><b>Update Q/A Quizzes</b></Accordion.Header>
+                    <Accordion.Body>
+                        
+                    </Accordion.Body>
+                </Accordion.Item>
+
+                <Accordion.Item eventKey='2'>
+                    <Accordion.Header><b>Assign to Users</b></Accordion.Header>
+                    <Accordion.Body>
+                        
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-            <div className="list-detail">
-                <TableQuiz reloadList={reloadList}/>
-            </div>
         </div>
     )
 }
