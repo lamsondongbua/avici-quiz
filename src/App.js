@@ -1,7 +1,7 @@
 import './App.scss'
 import Header from './components/Header/Header';
 import {Outlet} from 'react-router-dom';
-
+import PerfectScrollbar from 'react-perfect-scrollbar'
 
 const App = () =>{
   return (
@@ -15,7 +15,9 @@ const App = () =>{
         </div>
         <div className='app-content'>
           {/* outlet là một component đặc biệt được dùng để hiển thị các route con - đặt outlet ở phần route con sẽ được render */}
-          <Outlet/>
+          <PerfectScrollbar>
+            <Outlet/>
+          </PerfectScrollbar>  
         </div>
       </div>
 

@@ -1,7 +1,7 @@
 import {  useEffect, useState } from 'react';
 import Select from 'react-select'
 import './QuizQA.scss'
-import { getAllQuizForAdmin } from "../../../../services/apiServices";
+import { getAllQuizForAdmin, getQuizWithQA } from "../../../../services/apiServices";
 import {BsFillPatchPlusFill,BsPatchMinusFill} from 'react-icons/bs';
 import {AiFillPlusSquare, AiOutlineMinusCircle} from 'react-icons/ai';
 import {RiImageAddFill} from 'react-icons/ri';
@@ -37,6 +37,47 @@ const QuizQA = (props) => {
         fetchQuiz();
     },[]);
     
+    useEffect(() =>{
+        if (selectedQuiz && selectedQuiz.value){
+            fetchQuizWithQA();
+        }
+    },[selectedQuiz])
+
+    // return a promise that resolves with a File instance
+    function urltoFile(url, filename, mimeType){
+        return fetch(url)
+            .then(res => res.arrayBuffer())
+            .then(buf => new File([buf], filename,{type:mimeType}));
+    }
+
+    const fetchQuizWithQA = async () => {
+        let response = await getQuizWithQA(selectedQuiz.value);
+        if (response && response.EC === 0) {
+            //convert base64 to file object
+            for (let i = 0; i< response.DT.qa.length; i++){
+                let q = response.DT.qa[i]
+                if (q.imageFile){
+                    q.imageName = `Question-${q.id}.png`
+                    q.imageFile = await urltoFile(`data:image/png;base64,${q.imageFile}`, `Question-${q.id}.png`,'image/png')
+                }
+            }
+            const transformedQuestions = response.DT.qa.map(q => {
+                return {
+                    ...q,
+                    imageName: q.imageName || '',
+                    imageFile: q.imageFile || '',
+                    answersCreated: q.answers.map(a => ({
+                        id: a.id,
+                        description: a.description,
+                        isCorrect: a.isCorrect
+                    }))
+                }
+            });
+            setQuestions(transformedQuestions);
+        }
+    }
+    
+
     const fetchQuiz = async() => {
         let response = await getAllQuizForAdmin();
         //check response sau khi get
