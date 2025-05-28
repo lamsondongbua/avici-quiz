@@ -97,4 +97,8 @@ const postCreateNewAnswerForQuestion = (description, correct_answer, question_id
     })
 }
 
-export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister,getQuizByUser, getDataQuiz, postSubmitQuiz, postCreateNewQuiz, getAllQuizForAdmin, putUpdateQuizForAdmin, deleteQuizForAdmin, postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion}
+const postAssignQuiz = (quizId, userId) => {
+    return instance.post('api/v1/quiz-assign-to-user',{quizId: quizId, userId: userId})
+}
+
+export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister,getQuizByUser, getDataQuiz, postSubmitQuiz, postCreateNewQuiz, getAllQuizForAdmin, putUpdateQuizForAdmin, deleteQuizForAdmin, postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion, postAssignQuiz}

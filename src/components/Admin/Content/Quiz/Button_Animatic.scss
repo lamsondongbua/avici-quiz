@@ -1,0 +1,23 @@
+.btn-animatic {
+    cursor: pointer;
+    background-color: #3b82f6;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    border-bottom: 4px solid #2563eb;
+    transition: all 0.2s ease-in-out;
+  
+    &:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+      border-bottom-width: 6px;
+    }
+  
+    &:active {
+      filter: brightness(0.9);
+      transform: translateY(2px);
+      border-bottom-width: 2px;
+    }
+  }
+  
