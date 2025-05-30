@@ -1,7 +1,7 @@
 import {  useEffect, useState } from 'react';
 import Select from 'react-select'
 import './QuizQA.scss'
-import { getAllQuizForAdmin, getQuizWithQA } from "../../../../services/apiServices";
+import { getAllQuizForAdmin, getQuizWithQA, postUpsertQA } from "../../../../services/apiServices";
 import {BsFillPatchPlusFill,BsPatchMinusFill} from 'react-icons/bs';
 import {AiFillPlusSquare, AiOutlineMinusCircle} from 'react-icons/ai';
 import {RiImageAddFill} from 'react-icons/ri';
@@ -20,7 +20,7 @@ const QuizQA = (props) => {
             description: '',
             imageFile: '',
             imageName: '',
-            answersCreated: [
+            answers: [
                 {id: uuidv4(), description: '', isCorrect: false},
             ]
         }
@@ -66,7 +66,7 @@ const QuizQA = (props) => {
                     ...q,
                     imageName: q.imageName || '',
                     imageFile: q.imageFile || '',
-                    answersCreated: q.answers.map(a => ({
+                    answers: q.answers.map(a => ({
                         id: a.id,
                         description: a.description,
                         isCorrect: a.isCorrect
@@ -109,7 +109,7 @@ const QuizQA = (props) => {
                 description: '',
                 imageFile: '',
                 imageName: '',
-                answersCreated: [
+                answers: [
                     {id: uuidv4(), description: '', isCorrect: false},
                 ]
             }
@@ -130,12 +130,12 @@ const QuizQA = (props) => {
         if (type === 'ADD'){
             const newAnswer = {id: uuidv4(), description: '', isCorrect: false};
             let index = questionClone.findIndex(item => item.id === questionId)
-            questionClone[index].answersCreated.push(newAnswer);
+            questionClone[index].answers.push(newAnswer);
             setQuestions(questionClone);
         }
         if (type === 'REMOVE'){
             let index = questionClone.findIndex(item => item.id === questionId)
-            questionClone[index].answersCreated = questionClone[index].answersCreated.filter(item => item.id !== answerId);
+            questionClone[index].answers = questionClone[index].answers.filter(item => item.id !== answerId);
             setQuestions(questionClone);
         }
     }
@@ -166,7 +166,7 @@ const QuizQA = (props) => {
         let questionClone = _.cloneDeep(questions);
         let index = questionClone.findIndex(item => item.id === questionId);
         if (index > -1) {
-            questionClone[index].answersCreated = questionClone[index].answersCreated.map(answer => {
+            questionClone[index].answers = questionClone[index].answers.map(answer => {
                 if (answer.id === answerId){
                     if (type === 'CHECKBOX'){
                         answer.isCorrect = value;
@@ -199,13 +199,13 @@ const QuizQA = (props) => {
             }
 
             // Validate số lượng câu trả lời
-            if (!q.answersCreated || q.answersCreated.length < 2) {
+            if (!q.answers || q.answers.length < 2) {
                 toast.error(`Question ${questionNumber}: At least two answers are required`);
                 return;
             }
             let hasCorrect = false;
-            for (let j = 0; j < q.answersCreated.length; j++) {
-                const a = q.answersCreated[j];
+            for (let j = 0; j < q.answers.length; j++) {
+                const a = q.answers[j];
                 if (a.isCorrect) {
                     hasCorrect = true;
                 }
@@ -225,7 +225,7 @@ const QuizQA = (props) => {
         //     const q = await postCreateNewQuestionForQuiz(Number(selectedQuiz.value), question.description, question.imageFile);
         //     //lặp tiếp để lấy answer
         //     //submit answer
-        //     await Promise.all(question.answersCreated.map(async(answer) => {
+        //     await Promise.all(question.answers.map(async(answer) => {
         //         await postCreateNewAnswerForQuestion(
         //             answer.description, answer.isCorrect, q.DT.id
         //         )
@@ -234,22 +234,47 @@ const QuizQA = (props) => {
         // }))
 
         //CÁCH 2: DÙNG FOR OF + AWAIT chạy tuần tự
-        for (const question of questions){
-            const  q = await postCreateNewQuestionForQuiz(Number(selectedQuiz.value), question.description, question.imageFile);
-            for (const answer of question.answersCreated){
-                await postCreateNewAnswerForQuestion(
-                    answer.description, answer.isCorrect, q.DT.id
-                )
+        // for (const question of questions){
+        //     const  q = await postCreateNewQuestionForQuiz(Number(selectedQuiz.value), question.description, question.imageFile);
+        //     for (const answer of question.answers){
+        //         await postCreateNewAnswerForQuestion(
+        //             answer.description, answer.isCorrect, q.DT.id
+        //         )
+        //     }
+        // }
+        let questionsClone = _.cloneDeep(questions);
+        for (let i = 0; i<questionsClone.length; i++){
+            if (questionsClone[i].imageFile){
+                questionsClone[i].imageFile = await toBase64(questionsClone[i].imageFile);
             }
         }
-        toast.success(
-            <div>
-                <span><VscCheckAll/> Congratulate! Created Successfully (^-^)</span>
-            </div>
-        )
-        setQuestions(initQuestions);
+        console.log('questionsClone',questionsClone);
+        let response  = await postUpsertQA({
+            quizId : selectedQuiz.value,
+            questions: questionsClone
+        });
+        if (response && response.EC === 0){
+            toast.success('Create question and answer success')
+            fetchQuizWithQA();
+        }
+        console.log('check update answer', response);
+        console.log('check selectedquiz', selectedQuiz.value);
+        console.log('check questionClone',questionsClone);
+        // toast.success(
+        //     <div>
+        //         <span><VscCheckAll/> Congratulate! Created Successfully (^-^)</span>
+        //     </div>
+        // )
+        // setQuestions(initQuestions);
 
     }
+
+    const toBase64 = file => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    })
 
     //hàm xử lí hiển thị ảnh preview
     const handlePreviewImage = (questionId) => {
@@ -315,8 +340,8 @@ const QuizQA = (props) => {
 
                                 </div>
 
-                                {   question.answersCreated && question.answersCreated.length > 0 && 
-                                    question.answersCreated.map((answer,index) => {
+                                {   question.answers && question.answers.length > 0 && 
+                                    question.answers.map((answer,index) => {
                                         return (
                                             <div key={answer.id} className='answers-content'>
                                                 <input
@@ -339,7 +364,7 @@ const QuizQA = (props) => {
                                                     <span onClick={() => handleAddRemoveAnswer('ADD', question.id)}>
                                                         <AiFillPlusSquare className='icon-add'/>
                                                     </span>
-                                                    {   question.answersCreated.length > 1 &&
+                                                    {   question.answers.length > 1 &&
                                                         <span onClick={() => handleAddRemoveAnswer('REMOVE', question.id, answer.id)}>
                                                             <AiOutlineMinusCircle className='icon-remove'/>
                                                         </span>
