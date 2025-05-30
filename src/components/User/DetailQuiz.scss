@@ -50,8 +50,34 @@
         border-radius: 5px;
         padding: 20px;
 
+        //CSS phần time
         .main-timer{
-
+            border-bottom: 1px dashed;
+            padding-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            padding-top: 10px;
+            font-size: 20px;
+        }
+        .main-question{
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            padding: 15px;
+            .question{
+                border: 1px solid gray;
+                height: 40px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                border-radius: 50%;
+            
+                &:hover{
+                    background-color: cadetblue;
+                }
+            }
         }
     }
 }
