@@ -73,9 +73,18 @@
                 justify-content: center;
                 cursor: pointer;
                 border-radius: 50%;
-            
+                //class con của question
                 &:hover{
                     background-color: cadetblue;
+                }
+                // class cùng cấp với question
+                &.selected{
+                    background-color: rgb(18, 208, 18);
+                    color: white;
+                }
+
+                &.clicked{
+                    background-color: red;
                 }
             }
         }
