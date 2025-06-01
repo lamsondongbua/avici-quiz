@@ -6,6 +6,7 @@ import {toast} from 'react-toastify';
 import {useDispatch} from 'react-redux';
 import { doLogin } from '../../redux/action/userAction';
 import { ImSpinner9 } from "react-icons/im";
+import Language from '../Header/Language';
 
 
 const Login = (props) => {
@@ -48,11 +49,21 @@ const Login = (props) => {
             setIsLoading(false);
         }
     }
+
+    //ấn Enter sau khi nhập password sẽ đăng nhập
+    const handleKeyDown = (event) => {
+        console.log('event key: ', event.key);
+        if (event && event.key === 'Enter'){
+            handleLogin();
+        }
+    }
+
     return (
         <div className="login-container">
             <div className='header'>
                 <span>Don't have an account yet?</span>
                 <button onClick={() => navigate('/register')}>Sign up</button>
+                <Language/>
             </div>
             <div className='title col-4 mx-auto'>
                 AVICI QUIZ 
@@ -67,7 +78,7 @@ const Login = (props) => {
                 </div>
                 <div className='form-group'>
                     <label>Password</label>
-                    <input type={'password'} className='form-control' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                    <input type={'password'} className='form-control' value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={(event) => handleKeyDown(event)}/>
                 </div>
                 <span className='forgot-password'>Forgot password?</span>
                 <div>
