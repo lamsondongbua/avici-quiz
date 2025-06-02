@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { getAllQuizForAdmin, getAllUsers, postAssignQuiz} from "../../../../services/apiServices";
 import './Button_Animatic.scss'
 import {toast} from 'react-toastify'
+import { useTranslation, Trans } from 'react-i18next'
+
 const AssignQuiz = (props) => {
     const [selectedQuiz, setSelectedQuiz] = useState({});
     const [listQuiz, setListQuiz] = useState([]);

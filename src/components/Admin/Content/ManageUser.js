@@ -8,6 +8,9 @@ import ModalUpdateUser from "./ModalUpdateUser";
 import ModalViewUser from "./ModalViewUser";
 import ModalDeleteUser from "./ModalDeleteUser";
 import TableUserPaginate from "./TableUserPaginate";
+import { useTranslation, Trans } from 'react-i18next'
+
+
 const ManageUser = (props) => {
     //đây là biến giới hạn bao nhiêu phần tử có trong 1 trang
     const LIMIT_USER = 6;

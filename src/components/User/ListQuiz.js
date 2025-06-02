@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getQuizByUser } from '../../services/apiServices';
 import './ListQuiz.scss'
 import { useNavigate } from "react-router-dom";
+import { useTranslation, Trans } from 'react-i18next'
+
 const ListQuiz = (props) => {
     const navigate = useNavigate();
     const [arrayQuiz, setArrayQuiz] = useState([]);

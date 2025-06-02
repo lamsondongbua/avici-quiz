@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation, Trans } from 'react-i18next'
 
 const CountDown = (props) => {
     const {onTimeUp} = props;

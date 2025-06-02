@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {FcPlus} from 'react-icons/fc';
 import _ from 'lodash';
+import { useTranslation, Trans } from 'react-i18next'
+
 const ModalViewUser = (props) => {
     const {show, setShow, listUsers, ID} = props;
 

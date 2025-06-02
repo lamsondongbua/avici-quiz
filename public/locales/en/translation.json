@@ -1,0 +1,10 @@
+{
+    "homepage": {
+        "title1": "Create quizzes your way",
+        "title2" : "A great quiz gets everyone involved – build yours today!",
+        "title3" : {
+            "login" : "Start creating - it's free!",
+            "doing-quiz": "Take Quiz Now"
+        }
+    }
+}

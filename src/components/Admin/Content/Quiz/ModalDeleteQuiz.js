@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {toast} from 'react-toastify'
 import { deleteQuizForAdmin } from '../../../../services/apiServices';
+import { useTranslation, Trans } from 'react-i18next'
+
 const ModalDeleteQuiz = (props) => {
     const {show, setShow, dataDeleteQuiz, fetchListQuiz} = props;
     const handleClose = () => setShow(false);

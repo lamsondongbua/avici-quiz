@@ -12,7 +12,7 @@ const Language = (props) => {
     
     return (
         <>
-            <NavDropdown title="Việt Nam" id="basic-nav-dropdown">
+            <NavDropdown title={i18n.language === 'vi' ? 'Việt Nam' : 'English'} id="basic-nav-dropdown">
                 <NavDropdown.Item onClick={() => handleChangeLanguage('en')}>English</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => handleChangeLanguage('vi')}>Việt Nam</NavDropdown.Item>
             </NavDropdown>

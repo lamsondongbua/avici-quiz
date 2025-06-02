@@ -5,6 +5,7 @@ import Select from 'react-select'
 import { postCreateNewQuiz } from '../../../../services/apiServices'
 import TableQuiz from './TableQuiz';
 import { Accordion } from 'react-bootstrap';
+import { useTranslation, Trans } from 'react-i18next'
 
 
 const options = [

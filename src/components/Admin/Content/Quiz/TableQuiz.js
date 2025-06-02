@@ -3,6 +3,8 @@ import { getAllQuizForAdmin } from "../../../../services/apiServices";
 import ModalDeleteQuiz from "./ModalDeleteQuiz";
 import ModalUpdateQuiz from "./ModalUpdateQuiz";
 import './ManageQuiz.scss'
+import { useTranslation, Trans } from 'react-i18next'
+
 const TableQuiz = (props) => {
     const {reloadList} = props;
     

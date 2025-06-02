@@ -6,6 +6,8 @@ import './DetailQuiz.scss'
 import Question from "./Question";
 import ModalResult from './ModalResult'
 import RightContent from "./Time_NumberQuestion/RightContent";
+import { useTranslation, Trans } from 'react-i18next'
+
 const DetailQuiz = (props) => {
     //lấy tham số trên URL
     const params = useParams();

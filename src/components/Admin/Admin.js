@@ -4,6 +4,7 @@ import {FaBars} from 'react-icons/fa'
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import PerfectScrollbar from 'react-perfect-scrollbar'
+import { useTranslation, Trans } from 'react-i18next'
 
 const Admin  = (props) => {
     const [collapsed, setCollapsed] = useState(false);

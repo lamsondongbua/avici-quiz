@@ -5,6 +5,8 @@ import {FcPlus} from 'react-icons/fc';
 import {toast} from 'react-toastify';
 import { putUpdateQuizForAdmin } from '../../../../services/apiServices';
 import _ from 'lodash';
+import { useTranslation, Trans } from 'react-i18next'
+
 const ModalUpdateQuiz = (props) => {
     const {show, setShow, dataUpdateQuiz, setUpdateDataQuiz, fetchListQuiz} = props;
 

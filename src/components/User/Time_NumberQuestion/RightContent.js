@@ -1,5 +1,7 @@
 import CountDown from "./CountDown";
 import {useRef} from 'react';
+import { useTranslation, Trans } from 'react-i18next'
+
 const RightContent = (props) => {
     const refDiv = useRef([]);
 

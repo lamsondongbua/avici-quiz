@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useTranslation, Trans } from 'react-i18next'
 
 const ModalResult = (props) => {
     const {show, setShow, dataModalResult} = props;

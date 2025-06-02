@@ -5,6 +5,7 @@ import {postRegister} from '../../services/apiServices';
 import {toast} from 'react-toastify'
 import {VscEye, VscEyeClosed} from 'react-icons/vsc';
 import Language from "../Header/Language";
+import { useTranslation, Trans } from 'react-i18next'
 
 
 const Register = (props) =>{

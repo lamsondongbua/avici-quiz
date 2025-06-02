@@ -2,6 +2,7 @@ import './App.scss'
 import Header from './components/Header/Header';
 import {Outlet} from 'react-router-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar'
+import { useTranslation, Trans } from 'react-i18next'
 
 const App = () =>{
   return (

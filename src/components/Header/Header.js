@@ -8,6 +8,7 @@ import { logout } from '../../services/apiServices';
 import {toast} from 'react-toastify'
 import { doLogout } from '../../redux/action/userAction';
 import Language from './Language';
+import { useTranslation, Trans } from 'react-i18next'
 
 const Header = () => {
   const isAuthenticated = useSelector(state => state.user.isAuthenticated)

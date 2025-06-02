@@ -7,6 +7,7 @@ import TableQuiz from './TableQuiz';
 import { Accordion } from 'react-bootstrap';
 import QuizQA from './QuizQA';
 import AssignQuiz from './AssignQuiz';
+import { useTranslation, Trans } from 'react-i18next'
 
 
 const options = [

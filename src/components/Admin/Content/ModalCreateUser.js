@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import {FcPlus} from 'react-icons/fc';
 import {toast} from 'react-toastify';
 import { postCreateNewUser } from '../../../services/apiServices';
+import { useTranslation, Trans } from 'react-i18next'
 
 const ModalCreateUser = (props) => {
     const {show, setShow} = props;

@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import { useState } from 'react';
 import Lightbox from 'react-awesome-lightbox';
+import { useTranslation, Trans } from 'react-i18next'
 
 const Question = (props) =>{
     const {data, currentQuestion, handleCheckbox} = props;

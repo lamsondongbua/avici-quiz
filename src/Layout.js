@@ -15,6 +15,8 @@ import ManageQuiz from "./components/Admin/Content/Quiz/ManageQuiz";
 import Questions from "./components/Admin/Content/QuestionsAdmin/Questions";
 import Test1 from "./routes/Test1";
 import PrivateRoute from "./routes/PrivateRoute";
+import {Suspense} from 'react';
+import { useTranslation, Trans } from 'react-i18next'
 
 const NotFound = () =>{
     return (
@@ -25,7 +27,7 @@ const NotFound = () =>{
 }
 const Layout = (props) =>{
     return (
-        <>
+        <Suspense fallback={<div>Loading...</div>}>
             <Routes>
                 <Route path='/' element = {<App/>}>
                     <Route index element= {<HomePage/>}/>
@@ -59,7 +61,7 @@ const Layout = (props) =>{
                 theme="dark"
                 transition= {Bounce}
             />
-        </>
+        </Suspense>
     )
 }
 

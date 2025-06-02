@@ -19,14 +19,14 @@ const HomePage = (props) =>{
                 <div className='title-1'>
                     {t('homepage.title1')}
                 </div>
-                <div className='title-2'>You don't want to make a boring form. And your audience won't answer one.
-                     Create a typeform instead - and make everyone happy.
+                <div className='title-2'>
+                    {t('homepage.title2')}
                 </div>
                 <div className='title-3'>
                     {isAuthenticated === false ?
-                        <button onClick={() => navigate('/login')}>Get's started. It's free</button>
+                        <button onClick={() => navigate('/login')}>{t('homepage.title3.login')}</button>
                         :
-                        <button onClick={() => navigate('/users')}>Doing Quiz Now</button>
+                        <button onClick={() => navigate('/users')}>{t('homepage.title3.doing-quiz')}</button>
                     }
                 </div>
             </div>

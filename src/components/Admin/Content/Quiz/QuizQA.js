@@ -11,6 +11,7 @@ import _ from 'lodash';
 import {toast} from 'react-toastify'
 import { postCreateNewAnswerForQuestion, postCreateNewQuestionForQuiz } from '../../../../services/apiServices';
 import { VscCheckAll } from "react-icons/vsc";
+import { useTranslation, Trans } from 'react-i18next'
 
 
 const QuizQA = (props) => {
