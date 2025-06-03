@@ -6,6 +6,7 @@ import { deleteQuizForAdmin } from '../../../../services/apiServices';
 import { useTranslation, Trans } from 'react-i18next'
 
 const ModalDeleteQuiz = (props) => {
+    const { t } = useTranslation();
     const {show, setShow, dataDeleteQuiz, fetchListQuiz} = props;
     const handleClose = () => setShow(false);
     const handleSubmitDeleteQuiz = async() =>{
@@ -30,15 +31,15 @@ const ModalDeleteQuiz = (props) => {
                 backdrop= "static"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Confirm Delete This Quiz?</Modal.Title>
+                    <Modal.Title>{t('modalDeleteQuiz.title')}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Are you sure to delete the quiz which you selected (id = <b>{dataDeleteQuiz && dataDeleteQuiz.id ? dataDeleteQuiz.id : ""}</b>)</Modal.Body>
+                <Modal.Body>{t('modalDeleteQuiz.body')} (id = <b>{dataDeleteQuiz && dataDeleteQuiz.id ? dataDeleteQuiz.id : ""}</b>)</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Cancel
+                        {t('modalDeleteQuiz.cancel')}
                     </Button>
                     <Button variant="primary" onClick={() => {handleSubmitDeleteQuiz()}}>
-                        Confirm
+                        {t('modalDeleteQuiz.confirm')}
                     </Button>
                 </Modal.Footer>
             </Modal>

@@ -7,6 +7,7 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import { useTranslation, Trans } from 'react-i18next'
 
 const Admin  = (props) => {
+    const { t } = useTranslation();
     const [collapsed, setCollapsed] = useState(false);
 
     return (

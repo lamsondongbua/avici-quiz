@@ -4,6 +4,7 @@ import { useTranslation, Trans } from 'react-i18next'
 
 const RightContent = (props) => {
     const refDiv = useRef([]);
+    const { t } = useTranslation();
 
     const {dataQuiz, handleFinish, setIndex} = props;
 

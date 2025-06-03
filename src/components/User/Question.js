@@ -4,6 +4,8 @@ import Lightbox from 'react-awesome-lightbox';
 import { useTranslation, Trans } from 'react-i18next'
 
 const Question = (props) =>{
+    const { t } = useTranslation();
+
     const {data, currentQuestion, handleCheckbox} = props;
     const [isPreviewImage, setIsPreviewImage] = useState(false);
     

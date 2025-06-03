@@ -4,6 +4,8 @@ import Modal from 'react-bootstrap/Modal';
 import { useTranslation, Trans } from 'react-i18next'
 
 const ModalResult = (props) => {
+    const { t } = useTranslation();
+
     const {show, setShow, dataModalResult} = props;
 
     const handleClose = () => setShow(false);

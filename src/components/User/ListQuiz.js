@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation, Trans } from 'react-i18next'
 
 const ListQuiz = (props) => {
+    const { t } = useTranslation();
+
     const navigate = useNavigate();
     const [arrayQuiz, setArrayQuiz] = useState([]);
 

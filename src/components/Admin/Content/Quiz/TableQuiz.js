@@ -6,6 +6,7 @@ import './ManageQuiz.scss'
 import { useTranslation, Trans } from 'react-i18next'
 
 const TableQuiz = (props) => {
+    const { t } = useTranslation();
     const {reloadList} = props;
     
     const [listQuiz, setListQuiz] = useState([]);
@@ -44,16 +45,16 @@ const TableQuiz = (props) => {
     }
     return (
         <>
-        <div className="mt-2"><b>List Quizzes</b></div>
+        <div className="mt-2"><b>{t("tableQuiz.title")}</b></div>
         <div>
             <table className="table table-striped table-info table-hover my-2">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">{t("tableQuiz.id")}</th>
+                        <th scope="col">{t("tableQuiz.name")}</th>
+                        <th scope="col">{t("tableQuiz.description")}</th>
+                        <th scope="col">{t("tableQuiz.type")}</th>
+                        <th scope="col">{t("tableQuiz.actions")}</th>
                     </tr>
                 </thead>
                 <tbody className="table-group-divider">
@@ -65,8 +66,8 @@ const TableQuiz = (props) => {
                                 <td>{item.description}</td>
                                 <td>{item.difficulty}</td>
                                 <td style={{display: 'flex', gap: '15px'}}>
-                                    <button className="btn " style={{backgroundColor: '#07f22e'}} onClick={() => handleUpdate(item)}>Edit</button>
-                                    <button className="btn btn-danger" onClick={() => handleDelete(item)}>Delete</button>
+                                    <button className="btn " style={{backgroundColor: '#07f22e'}} onClick={() => handleUpdate(item)}>{t("tableQuiz.edit")}</button>
+                                    <button className="btn btn-danger" onClick={() => handleDelete(item)}>{t("tableQuiz.delete")}</button>
                                 </td>
                             </tr>
                         )

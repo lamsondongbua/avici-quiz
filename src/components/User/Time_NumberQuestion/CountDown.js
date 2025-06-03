@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useTranslation, Trans } from 'react-i18next'
 
 const CountDown = (props) => {
+    const { t } = useTranslation();
+
     const {onTimeUp} = props;
     const [count, setCount] = useState(10);
     //hàm chuyển giây thành giờ và phút

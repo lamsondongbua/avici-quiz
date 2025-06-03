@@ -15,6 +15,7 @@ import { useTranslation, Trans } from 'react-i18next'
 
 
 const QuizQA = (props) => {
+    const { t } = useTranslation();
     const initQuestions = [
         {
             id: uuidv4(),
@@ -294,7 +295,7 @@ const QuizQA = (props) => {
         <div className="questions-container">
             <div className="add-new-question">
                 <div className='col-6 form-group'>
-                    <label className='mb-2'>Select Quiz: </label>
+                    <label className='mb-2'>{t('quizQA.selectQuiz')}</label>
                     <Select
                         className='z-indexx'
                         value={selectedQuiz}
@@ -303,7 +304,7 @@ const QuizQA = (props) => {
                     />
                 </div>
                 <div className='mt-3 mb-2'>
-                    Add questions: 
+                    {t('quizQA.addQuestions')}
                 </div>
                 {
                     questions && questions.length > 0 && 
@@ -319,14 +320,14 @@ const QuizQA = (props) => {
                                             value={question.description}
                                             onChange={(e) => handleOnChangeForQuestion('QUESTION', question.id,e.target.value)}
                                         />
-                                        <label>Create Description For Your Question {index + 1}</label>
+                                        <label>{t('quizQA.descriptionForQuestion')} {index + 1}</label>
                                     </div>
                                     <div className='group-upload'>
                                         <label htmlFor={`${question.id}`}>
                                             <RiImageAddFill className='label-up'/>
                                         </label>
                                         <input id={`${question.id}`} type='file' onChange={(e) => handleOnChangeFileQuestion(question.id, e)} hidden/>
-                                        <span>{question.imageName ? <span style={{cursor:'pointer'}} onClick={() => handlePreviewImage(question.id)}>{question.imageName}</span> : 'No file is uploaded'}</span>
+                                        <span>{question.imageName ? <span style={{cursor:'pointer'}} onClick={() => handlePreviewImage(question.id)}>{question.imageName}</span> :  t('quizQA.noFile')}</span>
                                     </div>
                                     <div className='btn-add'>
                                         <span onClick={() => handleAddRemoveQuestion('ADD', '')}>
@@ -359,7 +360,7 @@ const QuizQA = (props) => {
                                                         value={answer.description}
                                                         onChange={(e) => handleCheckBox('INPUT',answer.id,question.id,e.target.value)}
                                                     />
-                                                    <label>Answer {index+1}</label>
+                                                    <label>{t('quizQA.answerNumber')} {index+1}</label>
                                                 </div>
                                                 <div className='btn-group'>
                                                     <span onClick={() => handleAddRemoveAnswer('ADD', question.id)}>
@@ -386,7 +387,7 @@ const QuizQA = (props) => {
                             onClick={() => handleSubmitQuestionForQuiz()} 
                             className='btn btn-dark'
                         >
-                            Save Questions
+                            {t('quizQA.saveQuestions')}
                         </button>
                     </div>
                 }

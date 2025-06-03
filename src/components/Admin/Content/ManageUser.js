@@ -12,6 +12,7 @@ import { useTranslation, Trans } from 'react-i18next'
 
 
 const ManageUser = (props) => {
+    const { t } = useTranslation();
     //đây là biến giới hạn bao nhiêu phần tử có trong 1 trang
     const LIMIT_USER = 6;
     const [pageCount, setPageCount] = useState(0); 
@@ -79,12 +80,12 @@ const ManageUser = (props) => {
     return(
         <div className="manage-user-container">
             <div className="title">
-                Manage User
+                {t("manageUser.title")}
             </div>
 
             <div className="users-content">
                 <div className="btn-add-new">
-                    <button className="btn btn-info" onClick={() => setShowModalCreateUser(true)}> <FcPlus/> Add new users</button>
+                    <button className="btn btn-info" onClick={() => setShowModalCreateUser(true)}> <FcPlus/>{t("manageUser.addNewUser")}</button>
                 </div>
                 <div className="table-users-container">
                     {/* Cái này dùng khi thích cuộn chuột dài ngoằng (có thanh scroll) */}

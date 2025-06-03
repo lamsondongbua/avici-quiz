@@ -15,6 +15,7 @@ import { useTranslation, Trans } from 'react-i18next'
 
 
 const Questions = (props) => {
+    const { t } = useTranslation();
     const [selectedQuiz, setSelectedQuiz] = useState({});
     const initQuestions = [
         {
@@ -144,7 +145,7 @@ const Questions = (props) => {
     const handleSubmitQuestionForQuiz = async () => {
         //validate
         if (_.isEmpty(selectedQuiz)){
-            toast.error('Please choose a Quiz!')
+            toast.error("Please select a Quiz!")
             return;
         }
 
@@ -154,13 +155,13 @@ const Questions = (props) => {
 
         // Validate mô tả câu hỏi
             if (!q.description || q.description.trim() === '') {
-                toast.error(`Question ${questionNumber}: Description is required`);
+                toast.error("Question " + questionNumber + " must have description!")                
                 return;
             }
 
             // Validate số lượng câu trả lời
             if (!q.answersCreated || q.answersCreated.length < 2) {
-                toast.error(`Question ${questionNumber}: At least two answers are required`);
+                toast.error("Question " + questionNumber + " must have at least 2 answers!")
                 return;
             }
             let hasCorrect = false;
@@ -171,7 +172,7 @@ const Questions = (props) => {
                 }
             }
             if (!hasCorrect) {
-                toast.error(`Question ${questionNumber}: At least one correct answer is required`);
+                toast.error("Question " + questionNumber + " must have at least 1 correct answer!")                
                 return;
             }
         }
@@ -204,7 +205,7 @@ const Questions = (props) => {
         }
         toast.success(
             <div>
-                <span><VscCheckAll/> Congratulate! Created Successfully (^-^)</span>
+                <span><VscCheckAll/> Congratulation! Created Successfully (^-^)</span>
             </div>
         )
         setQuestions(initQuestions);
@@ -227,12 +228,12 @@ const Questions = (props) => {
     return (
         <div className="questions-container">
             <div className="title">
-                Manage Questions
+                {t('questions.title')}
             </div>
             <hr/>
             <div className="add-new-question">
                 <div className='col-6 form-group'>
-                    <label className='mb-2'>Select Quiz: </label>
+                    <label className='mb-2'>{t('questions.selectQuiz')}</label>
                     <Select
                         className='z-indexx'
                         value={selectedQuiz}
@@ -241,7 +242,7 @@ const Questions = (props) => {
                     />
                 </div>
                 <div className='mt-3 mb-2'>
-                    Add questions: 
+                    {t('questions.addQuestions')}
                 </div>
                 {
                     questions && questions.length > 0 && 
@@ -253,18 +254,18 @@ const Questions = (props) => {
                                         <input 
                                             type="text" 
                                             className="form-control" 
-                                            placeholder='Create Your Description'
+                                            placeholder={t('questions.descriptionPlaceholder')}
                                             value={question.description}
                                             onChange={(e) => handleOnChangeForQuestion('QUESTION', question.id,e.target.value)}
                                         />
-                                        <label>Create Description For Your Question {index + 1}</label>
+                                        <label>{t('questions.descriptionLabel', { number: index + 1 })}</label>
                                     </div>
                                     <div className='group-upload'>
                                         <label htmlFor={`${question.id}`}>
                                             <RiImageAddFill className='label-up'/>
                                         </label>
                                         <input id={`${question.id}`} type='file' onChange={(e) => handleOnChangeFileQuestion(question.id, e)} hidden/>
-                                        <span>{question.imageName ? <span style={{cursor:'pointer'}} onClick={() => handlePreviewImage(question.id)}>{question.imageName}</span> : 'No file is uploaded'}</span>
+                                        <span>{question.imageName ? <span style={{cursor:'pointer'}} onClick={() => handlePreviewImage(question.id)}>{question.imageName}</span> : t('questions.noFile')}</span>
                                     </div>
                                     <div className='btn-add'>
                                         <span onClick={() => handleAddRemoveQuestion('ADD', '')}>
@@ -297,7 +298,7 @@ const Questions = (props) => {
                                                         value={answer.description}
                                                         onChange={(e) => handleCheckBox('INPUT',answer.id,question.id,e.target.value)}
                                                     />
-                                                    <label>Answer {index+1}</label>
+                                                    <label>{t('questions.answer', { number: index + 1 })}</label>
                                                 </div>
                                                 <div className='btn-group'>
                                                     <span onClick={() => handleAddRemoveAnswer('ADD', question.id)}>
@@ -324,7 +325,7 @@ const Questions = (props) => {
                             onClick={() => handleSubmitQuestionForQuiz()} 
                             className='btn btn-dark'
                         >
-                            Save Questions
+                            {t('questions.save')}
                         </button>
                     </div>
                 }

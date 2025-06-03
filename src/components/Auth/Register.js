@@ -9,6 +9,7 @@ import { useTranslation, Trans } from 'react-i18next'
 
 
 const Register = (props) =>{
+    const { t } = useTranslation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
@@ -52,23 +53,23 @@ const Register = (props) =>{
     return (
         <div className="register-container">
             <div className='header'>
-                <span>Already have an account?</span>
-                <button onClick={() => navigate('/login')}>Login</button>
+                <span>{t('register.haveAccount')}</span>
+                <button onClick={() => navigate('/login')}>{t('register.login')}</button>
                 <Language/>
             </div>
             <div className='title col-4 mx-auto'>
-                AVICI QUIZ 
+                {t('register.title')}
             </div>
             <div className='welcome col-4 mx-auto'>
-                Start your journey?
+                {t('register.welcome')}
             </div>
             <div className='content-form col-4 mx-auto'>
                 <div className='form-group'>
-                    <label>Email (*)</label>
+                    <label>{t('register.email')} (*)</label>
                     <input type={'email'} className='form-control' value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
                 <div className='form-group pass-group'>
-                    <label>Password (*)</label>
+                    <label>{t('register.password')} (*)</label>
                     <input type={isShowPassword ? "text" : 'password'} className='form-control' value={password} onChange={(e) => setPassword(e.target.value)}/>
                     {isShowPassword ? 
                         <span className="icons-eye" onClick={() => setIsShowPassword(false)}>
@@ -81,15 +82,15 @@ const Register = (props) =>{
                     }
                 </div>
                 <div className="form-group">
-                    <label>Username</label>
+                    <label>{t('register.username')}</label>
                     <input type={'text'} className="form-control" value={username} onChange={(e) => setUsername(e.target.value)}/>
                 </div>
                 <div>
-                    <button className="btn-submit" onClick={() => handleRegister()}>Create my free account</button>
+                    <button className="btn-submit" onClick={() => handleRegister()}>{t('register.createAccount')}</button>
                 </div>
                 <div className="text-center">
                     <span className="back" onClick={() => navigate('/')}>
-                        &#60;&#60; Go to Homepage
+                        &#60;&#60; {t('register.goHome')}
                     </span>
                 </div>
             </div>

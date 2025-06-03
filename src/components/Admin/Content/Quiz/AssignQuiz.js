@@ -6,6 +6,7 @@ import {toast} from 'react-toastify'
 import { useTranslation, Trans } from 'react-i18next'
 
 const AssignQuiz = (props) => {
+    const { t } = useTranslation();
     const [selectedQuiz, setSelectedQuiz] = useState({});
     const [listQuiz, setListQuiz] = useState([]);
 
@@ -59,13 +60,13 @@ const AssignQuiz = (props) => {
             toast.success(response.EM);
         }
         else{
-            toast.error(response.EM)
+            toast.error(response.EM);
         }
     }
     return (
         <div className="assign-quiz-container row">
             <div className='col-6 form-group'>
-                <label className='mb-2'>Select Quiz: </label>
+                <label className='mb-2'>{t('assign.selectQuiz')}</label>
                 <Select
                     className='z-indexx'
                     value={selectedQuiz}
@@ -75,7 +76,7 @@ const AssignQuiz = (props) => {
             </div>
 
             <div className='col-6 form-group'>
-                <label className='mb-2'>Select User: </label>
+                <label className='mb-2'>{t('assign.selectUser')}</label>
                 <Select
                     className='z-indexx'
                     value={selectedUser}
@@ -85,7 +86,7 @@ const AssignQuiz = (props) => {
             </div>
 
             <div>
-                <button onClick={() => handleAssign()} className="btn-assign btn-animatic mt-2">Assign</button>
+                <button onClick={() => handleAssign()} className="btn-assign btn-animatic mt-2"> {t('assign.assignButton')}</button>
             </div>
         </div>
 

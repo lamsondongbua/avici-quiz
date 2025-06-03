@@ -9,6 +9,7 @@ import RightContent from "./Time_NumberQuestion/RightContent";
 import { useTranslation, Trans } from 'react-i18next'
 
 const DetailQuiz = (props) => {
+    const { t } = useTranslation();
     //lấy tham số trên URL
     const params = useParams();
     const quizId = params.id;

@@ -8,6 +8,7 @@ import _ from 'lodash';
 import { useTranslation, Trans } from 'react-i18next'
 
 const ModalUpdateQuiz = (props) => {
+    const { t } = useTranslation();
     const {show, setShow, dataUpdateQuiz, setUpdateDataQuiz, fetchListQuiz} = props;
 
     const handleClose =() => {
@@ -110,20 +111,20 @@ const ModalUpdateQuiz = (props) => {
             backdrop="static"
         >
             <Modal.Header closeButton>
-                <Modal.Title>Update a quiz</Modal.Title>
+                <Modal.Title>{t('modalUpdateQuiz.title')}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <form className="row g-3">
                     <div className="col-md-6">
-                        <label className="form-label">ID</label>
+                        <label className="form-label">{t('modalUpdateQuiz.id')}</label>
                         <input type="text" className="form-control" value={dataUpdateQuiz.id} disabled={true}/>
                     </div>
                     <div className="col-md-6">
-                        <label className="form-label">Name</label>
+                        <label className="form-label">{t('modalUpdateQuiz.name')}</label>
                         <input type="text" className="form-control" value={name} onChange={(event) => setName(event.target.value)} />
                     </div>
                     <div className="col-md-6">
-                        <label className="form-label">Description</label>
+                        <label className="form-label">{t('modalUpdateQuiz.description')}</label>
                         <input type="text" className="form-control" value={description} onChange={(event) =>setDescription(event.target.value)}/>
                     </div>
                     
@@ -132,31 +133,31 @@ const ModalUpdateQuiz = (props) => {
                         <input type="text" className="form-control" value={username} onChange={(event) => setUsername(event.target.value)}/>
                     </div> */}
                     <div className="col-md-4">
-                        <label className="form-label">Type</label>
+                        <label className="form-label">{t('modalUpdateQuiz.type')}</label>
                         <select className="form-select" value={type} onChange={(event) => setType(event.target.value)}>
-                            <option value="EASY">EASY</option>
-                            <option value="MEDIUM">MEDIUM</option>
-                            <option value="HARD">HARD</option>
+                            <option value="EASY">{t('modalUpdateQuiz.easy')}</option>
+                            <option value="MEDIUM">{t('modalUpdateQuiz.medium')}</option>
+                            <option value="HARD">{t('modalUpdateQuiz.hard')}</option>
                         </select>
                     </div>
 
                     <div className='col-md-12'>
-                        <label className='form-label label-upload upload-image-hover' htmlFor='labelUpload'> <FcPlus/> Upload File Image</label>
+                        <label className='form-label label-upload upload-image-hover' htmlFor='labelUpload'> <FcPlus/>{t('modalUpdateQuiz.upload')}</label>
                         <input type='file' id='labelUpload' hidden onChange={(event) => handleUploadImage(event)}/>
                     </div>
 
                     <div className='col-md-12 img-preview'>
-                        {previewImage ? <img src={previewImage}/> : <span>Preview Image</span> }
+                        {previewImage ? <img src={previewImage}/> : <span>{t('modalUpdateQuiz.preview')}</span> }
                         
                     </div>
                 </form>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                Close
+                    {t('modalUpdateQuiz.close')}
                 </Button>
                 <Button variant="primary" onClick={() => handleSubmitCreateQuiz()}>
-                Save
+                    {t('modalUpdateQuiz.save')}
                 </Button>
             </Modal.Footer>
         </Modal>

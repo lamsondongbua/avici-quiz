@@ -6,6 +6,7 @@ import {toast} from 'react-toastify'
 import { useTranslation, Trans } from 'react-i18next'
 
 const ModalDeleteUser = (props) => {
+    const { t } = useTranslation();
     const {show, setShow, dataDelete} = props;
 
     const handleClose = () => setShow(false);
@@ -33,15 +34,15 @@ const ModalDeleteUser = (props) => {
                 backdrop= "static"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Confirm Delete This User?</Modal.Title>
+                    <Modal.Title>{t('modalDeleteUser.title')}</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Are you sure to delete the user who you selected (email = <b>{dataDelete && dataDelete.email ? dataDelete.email : ""}</b>)</Modal.Body>
+                <Modal.Body>{t('modalDeleteUser.body')} (email = <b>{dataDelete && dataDelete.email ? dataDelete.email : ""}</b>)</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Cancel
+                        {t('modalDeleteUser.cancel')}
                     </Button>
                     <Button variant="primary" onClick={() => {handleSubmitDeleteUser()}}>
-                        Confirm
+                        {t('modalDeleteUser.confirm')}
                     </Button>
                 </Modal.Footer>
             </Modal>

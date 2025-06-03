@@ -4,6 +4,7 @@ import { useTranslation, Trans } from 'react-i18next'
 
 
 const TableUserPaginate = (props) =>{
+    const { t } = useTranslation();
     const {listUsers, pageCount} = props;
 
     const handlePageClick = (event) => {
@@ -18,11 +19,11 @@ const TableUserPaginate = (props) =>{
             <table className="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th>Action</th>
+                        <th scope="col">{t('table_user_paginate.id')}</th>
+                        <th scope="col">{t('table_user_paginate.username')}</th>
+                        <th scope="col">{t('table_user_paginate.email')}</th>
+                        <th scope="col">{t('table_user_paginate.role')}</th>
+                        <th>{t('table_user_paginate.action')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,9 +36,9 @@ const TableUserPaginate = (props) =>{
                                     <td>{item.email}</td>
                                     <td>{item.role}</td>
                                     <td>
-                                        <button className="btn btn-secondary" onClick={() => props.handleClickBtnView(item.id)}>View</button>
-                                        <button className="btn btn-warning mx-3" onClick={() => props.handleClickBtnUpdate(item)}>Update</button>
-                                        <button className="btn btn-danger" onClick={() => {props.handleClickBtnDelete(item)}}>Delete</button>
+                                        <button className="btn btn-secondary" onClick={() => props.handleClickBtnView(item.id)}>{t('table_user_paginate.view')}</button>
+                                        <button className="btn btn-warning mx-3" onClick={() => props.handleClickBtnUpdate(item)}>{t('table_user_paginate.update')}</button>
+                                        <button className="btn btn-danger" onClick={() => {props.handleClickBtnDelete(item)}}>{t('table_user_paginate.delete')}</button>
                                     </td>
                                 </tr>
                             )
@@ -45,19 +46,19 @@ const TableUserPaginate = (props) =>{
                     }
                     {listUsers && listUsers.length === 0 &&
                         <tr>
-                            <td colSpan={'5'}>Not found data</td>
+                            <td colSpan={'5'}>{t('table_user_paginate.no_data')}</td>
                         </tr>
                     }    
                 </tbody>
             </table>
             <div className="user-pagination">
                 <ReactPaginate
-                    nextLabel="Next >"
+                    nextLabel={t('table_user_paginate.pagination_next')}
                     onPageChange={handlePageClick}
                     pageRangeDisplayed={3}
                     marginPagesDisplayed={2}
                     pageCount={pageCount}
-                    previousLabel="< Previous"
+                    previousLabel={t('table_user_paginate.pagination_previous')}
                     pageClassName="page-item"
                     pageLinkClassName="page-link"
                     previousClassName="page-item"

@@ -1,6 +1,7 @@
 import { useTranslation, Trans } from 'react-i18next'
 
 const TableUser = (props) =>{
+    const { t } = useTranslation();
 
     const {listUsers} = props;
 
@@ -9,11 +10,11 @@ const TableUser = (props) =>{
             <table className="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Username</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">{t('table_user.id')}</th>
+                        <th scope="col">{t('table_user.username')}</th>
+                        <th scope="col">{t('table_user.email')}</th>
+                        <th scope="col">{t('table_user.role')}</th>
+                        <th scope="col">{t('table_user.action')}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,9 +27,9 @@ const TableUser = (props) =>{
                                     <td>{item.email}</td>
                                     <td>{item.role}</td>
                                     <td>
-                                        <button className="btn btn-secondary" onClick={() => props.handleClickBtnView(item.id)}>View</button>
-                                        <button className="btn btn-warning mx-3" onClick={() => props.handleClickBtnUpdate(item)}>Update</button>
-                                        <button className="btn btn-danger" onClick={() => {props.handleClickBtnDelete(item)}}>Delete</button>
+                                        <button className="btn btn-secondary" onClick={() => props.handleClickBtnView(item.id)}>{t('table_user.view')}</button>
+                                        <button className="btn btn-warning mx-3" onClick={() => props.handleClickBtnUpdate(item)}>{t('table_user.update')}</button>
+                                        <button className="btn btn-danger" onClick={() => {props.handleClickBtnDelete(item)}}>{t('table_user.delete')}</button>
                                     </td>
                                 </tr>
                             )
@@ -36,7 +37,7 @@ const TableUser = (props) =>{
                     }
                     {listUsers && listUsers.length === 0 &&
                         <tr>
-                            <td colSpan={'4'}>Not found data</td>
+                            <td colSpan={'4'}>{t('table_user.no_data')}</td>
                         </tr>
                     }    
                 </tbody>

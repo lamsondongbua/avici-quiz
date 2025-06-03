@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { useTranslation, Trans } from 'react-i18next'
 
 const PrivateRoute = (props) => {
+    const { t } = useTranslation();
+
     const isAuthenticated = useSelector(state => state.user.isAuthenticated)
     const navigate = useNavigate();
 

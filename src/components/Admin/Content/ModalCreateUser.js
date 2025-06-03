@@ -7,6 +7,7 @@ import { postCreateNewUser } from '../../../services/apiServices';
 import { useTranslation, Trans } from 'react-i18next'
 
 const ModalCreateUser = (props) => {
+    const { t } = useTranslation();
     const {show, setShow} = props;
 
     const handleClose =() => {
@@ -99,48 +100,48 @@ const ModalCreateUser = (props) => {
             className='modal-add-user'
         >
             <Modal.Header closeButton>
-                <Modal.Title>Add new user</Modal.Title>
+                <Modal.Title>{t('modalCreateUser.title')}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <form className="row g-3">
                     <div className="col-md-6">
-                        <label className="form-label">Email</label>
+                        <label className="form-label">{t('modalCreateUser.email')}</label>
                         <input type="email" className="form-control" value={email} onChange={(event) => setEmail(event.target.value)} />
                     </div>
                     <div className="col-md-6">
-                        <label className="form-label">Password</label>
+                        <label className="form-label">{t('modalCreateUser.password')}</label>
                         <input type="password" className="form-control" value={password} onChange={(event) =>setPassword(event.target.value)}/>
                     </div>
                     
                     <div className="col-md-6">
-                        <label className="form-label">Username</label>
+                        <label className="form-label">{t('modalCreateUser.username')}</label>
                         <input type="text" className="form-control" value={username} onChange={(event) => setUsername(event.target.value)}/>
                     </div>
                     <div className="col-md-4">
-                        <label className="form-label">Role</label>
+                        <label className="form-label">{t('modalCreateUser.role')}</label>
                         <select className="form-select" value={role} onChange={(event) => setRole(event.target.value)}>
-                            <option value="USER">USER</option>
-                            <option value="ADMIN">ADMIN</option>
+                            <option value="USER">{t('modalCreateUser.roleUser')}</option>
+                            <option value="ADMIN">{t('modalCreateUser.roleAdmin')}</option>
                         </select>
                     </div>
 
                     <div className='col-md-12'>
-                        <label className='form-label label-upload' htmlFor='labelUpload'> <FcPlus/> Upload File Image</label>
+                        <label className='form-label label-upload' htmlFor='labelUpload'> <FcPlus/>{t('modalCreateUser.uploadFileImage')}</label>
                         <input type='file' id='labelUpload' hidden onChange={(event) => handleUploadImage(event)}/>
                     </div>
 
                     <div className='col-md-12 img-preview'>
-                        {previewImage ? <img src={previewImage}/> : <span>Preview Image</span> }
+                        {previewImage ? <img src={previewImage}/> : <span>{t('modalCreateUser.previewImage')}</span> }
                         
                     </div>
                 </form>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                Close
+                    {t('modalCreateUser.close')}
                 </Button>
                 <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
-                Save
+                    {t('modalCreateUser.save')}
                 </Button>
             </Modal.Footer>
         </Modal>

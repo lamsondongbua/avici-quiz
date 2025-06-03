@@ -19,6 +19,7 @@ import { useTranslation, Trans } from 'react-i18next'
 
 
 const SideBar = (props) =>{
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const {image, collapsed, toggled, handleToggleSidebar} = props;
     return (
@@ -44,7 +45,7 @@ const SideBar = (props) =>{
                         }}
                     >
                         <GiAtomicSlashes size={'3em'} color={"red"}  />
-                        <span onClick={() => navigate('/')} style={{marginLeft: "5px", cursor: 'pointer'}}>AVICI QUIZ</span>
+                        <span onClick={() => navigate('/')} style={{marginLeft: "5px", cursor: 'pointer'}}>{t('sidebar.logo')}</span>
                     </div>
                 </SidebarHeader>
 
@@ -52,9 +53,9 @@ const SideBar = (props) =>{
                     <Menu iconShape="circle">
                         <MenuItem
                             icon={<FaTachometerAlt />}
-                            suffix={<span className="badge red">Main</span>}
+                            suffix={<span className="badge red">{t('sidebar.main')}</span>}
                         >
-                            Dashboard
+                            {t('sidebar.dashboard')}
                             <Link to="/admins"/>
                         </MenuItem>
                     </Menu>
@@ -63,18 +64,18 @@ const SideBar = (props) =>{
                             // suffix={<span className="badge yellow">3</span>}
                             // icon={<FaRegLaughWink />}
                             icon = {<FaGem/>}
-                            title="Features"
+                            title={t('sidebar.features')}
                         >
                             <MenuItem> 
-                                Quản lý Users
+                                {t('sidebar.manageUsers')}
                                 <Link to="/admins/manage-users"/>
                             </MenuItem>
                             <MenuItem> 
-                                Quản lý Bài Quiz
+                                {t('sidebar.manageQuizzes')}
                                 <Link to="/admins/manage-quizzes"/>
                             </MenuItem>
                             <MenuItem> 
-                                Quản lý Câu Hỏi
+                                {t('sidebar.manageQuestions')}
                                 <Link to= "/admins/manage-questions"/>
                             </MenuItem>
                         </SubMenu>

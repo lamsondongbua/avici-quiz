@@ -11,7 +11,7 @@ import { useTranslation, Trans } from 'react-i18next'
 
 
 const Login = (props) => {
-
+    const { t } = useTranslation();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -62,31 +62,31 @@ const Login = (props) => {
     return (
         <div className="login-container">
             <div className='header'>
-                <span>Don't have an account yet?</span>
-                <button onClick={() => navigate('/register')}>Sign up</button>
+                <span>{t('login.noAccount')}</span>
+                <button onClick={() => navigate('/register')}>{t('login.signUp')}</button>
                 <Language/>
             </div>
             <div className='title col-4 mx-auto'>
-                AVICI QUIZ 
+                {t('login.title')} 
             </div>
             <div className='welcome col-4 mx-auto'>
-                Hello, who's this?
+                {t('login.welcome')}
             </div>
             <div className='content-form col-4 mx-auto'>
                 <div className='form-group'>
-                    <label>Email</label>
+                    <label>{t('login.email')}</label>
                     <input type={'email'} className='form-control' value={email} onChange={(e) => setEmail(e.target.value)}/>
                 </div>
                 <div className='form-group'>
-                    <label>Password</label>
+                    <label>{t('login.password')}</label>
                     <input type={'password'} className='form-control' value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={(event) => handleKeyDown(event)}/>
                 </div>
-                <span className='forgot-password'>Forgot password?</span>
+                <span className='forgot-password'>{t('login.forgotPassword')}</span>
                 <div>
-                    <button className='btn-submit' onClick={() => handleLogin()} disabled={isLoading}>{isLoading === true && <ImSpinner9 className='loader-icon'/>}<span style={{paddingLeft: 10, paddingRight: 10}}>Login to AVICI QUIZ</span>{isLoading === true &&<ImSpinner9 className='loader-icon'/>}</button>
+                    <button className='btn-submit' onClick={() => handleLogin()} disabled={isLoading}>{isLoading === true && <ImSpinner9 className='loader-icon'/>}<span style={{paddingLeft: 10, paddingRight: 10}}>{t('login.loginBtn')}</span>{isLoading === true &&<ImSpinner9 className='loader-icon'/>}</button>
                 </div>
                 <div className='text-center'>
-                    <span className='back' onClick={() => navigate('/')}> &#60; &#60; Go to homepage</span>
+                    <span className='back' onClick={() => navigate('/')}> &#60; &#60; {t('login.backHome')}</span>
                 </div>
             </div>
         </div>
