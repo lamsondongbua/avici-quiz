@@ -19,12 +19,16 @@ const Admin  = (props) => {
             </div>
             <div className="admin-content">
                 <div className="admin-header">
-                    <FaBars onClick={() => setCollapsed(!collapsed)}/>
-                    <NavDropdown title={t('header.settings')} id="basic-nav-dropdown">
-                        <NavDropdown.Item >{t('header.profile')}</NavDropdown.Item>
-                        <NavDropdown.Item >{t('header.logout')}</NavDropdown.Item>
-                    </NavDropdown>
-                    <Language/>
+                    <span onClick={() => setCollapsed(!collapsed)}>
+                        <FaBars className="leftside"/>
+                    </span>
+                    <div className="rightside">
+                        <NavDropdown title={t('header.settings')} id="basic-nav-dropdown">
+                            <NavDropdown.Item >{t('header.profile')}</NavDropdown.Item>
+                            <NavDropdown.Item >{t('header.logout')}</NavDropdown.Item>
+                        </NavDropdown>
+                        <Language/>
+                    </div>
                 </div>
 
                 <PerfectScrollbar>
