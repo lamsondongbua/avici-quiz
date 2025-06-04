@@ -32,7 +32,7 @@ const Question = (props) =>{
                         <Lightbox 
                             image={`data:image/jpeg;base64,${data.image}`} 
                             onClose={() =>setIsPreviewImage(false)} 
-                            title={"Question Image"}
+                            title={t('question.imageTitle')}
                         >                 
                         </Lightbox>
                     }
@@ -40,7 +40,7 @@ const Question = (props) =>{
                 :
                 <div className='q-image'></div>
             }
-            <div className="question">Question {currentQuestion + 1}: {data.questionDescription}</div>
+            <div className="question">{t('question.title')} {currentQuestion + 1}: {data.questionDescription}</div>
                 <div className="answer">
                     {data.answers && data.answers.length && data.answers.map((a,index) =>{
                         return (

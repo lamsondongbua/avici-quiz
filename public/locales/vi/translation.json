@@ -188,5 +188,30 @@
         "settings": "Cài đặt",
         "profile": "Hồ sơ",
         "logout": "Đăng xuất"
-    }
+    },
+    "detailQuiz": {
+        "title": "Bài kiểm tra",
+        "prev": "Trước",
+        "next": "Tiếp",
+        "finish": "Hoàn thành",
+        "error": "Đã xảy ra lỗi!"
+    },
+    "listQuiz": {
+        "title": "Bài kiểm tra",
+        "start": "Bắt đầu ngay",
+        "noQuiz": "Bạn hiện chưa có bài kiểm tra nào..."
+    },
+    "modalResult": {
+        "title": "Kết quả của bạn...",
+        "totalQuestions": "Tổng số câu hỏi:",
+        "correctAnswers": "Số câu trả lời đúng:",
+        "showAnswers": "Xem đáp án",
+        "close": "Đóng"
+    },
+    "question": {
+        "title": "Câu hỏi",
+        "imageTitle": "Hình ảnh câu hỏi"
+    },
+    "layout": {
+        "notFound": "404. Không tìm thấy dữ liệu với URL hiện tại"    }
 }

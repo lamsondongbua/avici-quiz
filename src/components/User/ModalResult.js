@@ -21,22 +21,22 @@ const ModalResult = (props) => {
                 backdrop= "static"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Your Result...</Modal.Title>
+                    <Modal.Title>{t('modalResult.title')}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        Total Questions: <b>{dataModalResult.countTotal}</b>
+                        {t('modalResult.totalQuestions')} <b>{dataModalResult.countTotal}</b>
                     </div>
                     <div>
-                        Total Correct Answers: <b>{dataModalResult.countCorrect} </b>
+                        {t('modalResult.correctAnswers')} <b>{dataModalResult.countCorrect} </b>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Show Answers
+                        {t('modalResult.showAnswers')}
                     </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Close
+                        {t('modalResult.close')}
                     </Button>
                 </Modal.Footer>
             </Modal>

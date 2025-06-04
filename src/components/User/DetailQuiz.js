@@ -49,6 +49,7 @@ const DetailQuiz = (props) => {
                         // console.log("item answers ",item.answers)
                     });
                     // console.log('value - key', value, key);
+                    answers = _.orderBy(answers, ['id'], ['asc']);
                     return {questionId: key, answers : answers, questionDescription: questionDescription, image: image}
                 }
                 )
@@ -144,7 +145,7 @@ const DetailQuiz = (props) => {
                 setIsShowModalResult(true);
             }
             else{
-                alert('Something wrong');
+                alert(t('detailQuiz.error'));
             }    
         }
     }
@@ -153,7 +154,7 @@ const DetailQuiz = (props) => {
         <div className="detail-quiz-container">
             <div className="left-content">
                 <div className="title">
-                    Quiz {quizId}: {location?.state?.quizTitle}
+                    {t('detailQuiz.title')} {quizId}: {location?.state?.quizTitle}
                 </div>
                 <hr/>
                 <div className="q-body">
@@ -163,9 +164,9 @@ const DetailQuiz = (props) => {
                     <Question handleCheckbox = {handleCheckbox} currentQuestion = {currentQuestion} data={dataQuiz && dataQuiz.length > 0 ? dataQuiz[currentQuestion] : []}/>
                 </div>
                 <div className="footer">
-                    <button className="btn btn-secondary" onClick={() => handlePrev()}>Prev</button>
-                    <button className="btn btn-primary" onClick={() => handleNext()}>Next</button>
-                    <button className="btn btn-warning" onClick={() => handleFinish()}>Finish</button>
+                    <button className="btn btn-secondary" onClick={() => handlePrev()}>{t('detailQuiz.prev')}</button>
+                    <button className="btn btn-primary" onClick={() => handleNext()}>{t('detailQuiz.next')}</button>
+                    <button className="btn btn-warning" onClick={() => handleFinish()}>{t('detailQuiz.finish')}</button>
                 </div>
             </div>
             <div className="right-content">

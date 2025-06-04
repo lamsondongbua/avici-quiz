@@ -30,9 +30,9 @@ const ListQuiz = (props) => {
                         <div key={`${index}-quiz`} className="card" style={{ width: '18rem' }}>
                             <img src={`data:image/jpeg;base64,${quiz.image}`} className="card-img-top" alt="quiz thumbnail" />
                             <div className="card-body">
-                                <h5 className="card-title">Quiz {index + 1}</h5>
+                                <h5 className="card-title">{t('listQuiz.title')} {index + 1}</h5>
                                 <p className="card-text">{quiz.description}</p>
-                                <button onClick={()=> navigate(`/quiz/${quiz.id}`, {state: { quizTitle: quiz.description }})} className="btn btn-primary">Start Now</button>
+                                <button onClick={()=> navigate(`/quiz/${quiz.id}`, {state: { quizTitle: quiz.description }})} className="btn btn-primary">{t('listQuiz.start')}</button>
                             </div>
                         </div>
                     );
@@ -40,7 +40,7 @@ const ListQuiz = (props) => {
             }
 
             {arrayQuiz && arrayQuiz.length === 0 &&
-                <div>You don't have any quiz now...</div>
+                <div>{t('listQuiz.noQuiz')}</div>
             }
         </div>
     );

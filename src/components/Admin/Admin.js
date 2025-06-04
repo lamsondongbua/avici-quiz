@@ -5,6 +5,8 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { useTranslation, Trans } from 'react-i18next'
+import Language from "../Header/Language";
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const Admin  = (props) => {
     const { t } = useTranslation();
@@ -18,6 +20,11 @@ const Admin  = (props) => {
             <div className="admin-content">
                 <div className="admin-header">
                     <FaBars onClick={() => setCollapsed(!collapsed)}/>
+                    <NavDropdown title={t('header.settings')} id="basic-nav-dropdown">
+                        <NavDropdown.Item >{t('header.profile')}</NavDropdown.Item>
+                        <NavDropdown.Item >{t('header.logout')}</NavDropdown.Item>
+                    </NavDropdown>
+                    <Language/>
                 </div>
 
                 <PerfectScrollbar>

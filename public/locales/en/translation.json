@@ -188,6 +188,31 @@
         "settings": "Settings",
         "profile": "Profile",
         "logout": "Log out"
-    }
+    },
+    "detailQuiz": {
+        "title": "Quiz",
+        "prev": "Prev",
+        "next": "Next",
+        "finish": "Finish",
+        "error": "Something went wrong!"
+    },
+    "listQuiz": {
+        "title": "Quiz",
+        "start": "Start Now",
+        "noQuiz": "You don't have any quiz now..."
+    },
+    "modalResult": {
+        "title": "Your Result...",
+        "totalQuestions": "Total Questions:",
+        "correctAnswers": "Total Correct Answers:",
+        "showAnswers": "Show Answers",
+        "close": "Close"
+    },
+    "question": {
+        "title": "Question",
+        "imageTitle": "Question Image"
+    },
+    "layout": {
+        "notFound": "404. Not found data with your current URL"    }
 
 }
