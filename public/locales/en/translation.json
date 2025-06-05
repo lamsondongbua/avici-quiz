@@ -194,7 +194,10 @@
         "prev": "Prev",
         "next": "Next",
         "finish": "Finish",
-        "error": "Something went wrong!"
+        "error": "Something went wrong!",
+        "home": "Home",
+        "user" : "User",
+        "quiz" : "Quiz"
     },
     "listQuiz": {
         "title": "Quiz",

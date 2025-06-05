@@ -9,6 +9,7 @@ import {toast} from 'react-toastify'
 import { doLogout } from '../../redux/action/userAction';
 import Language from './Language';
 import { useTranslation, Trans } from 'react-i18next'
+import { GiDiceTarget } from "react-icons/gi";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -43,7 +44,7 @@ const Header = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <NavLink to='/' className='navbar-brand'>{t('header.brand')}</NavLink>
+        <NavLink to='/' className='navbar-brand'> <GiDiceTarget className='brand-icon'/>  {t('header.brand')}</NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

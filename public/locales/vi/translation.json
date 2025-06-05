@@ -194,7 +194,10 @@
         "prev": "Trước",
         "next": "Tiếp",
         "finish": "Hoàn thành",
-        "error": "Đã xảy ra lỗi!"
+        "error": "Đã xảy ra lỗi!",
+        "home" : "Trang Chủ",
+        "user" : "Người dùng",
+        "quiz" : "Bài trắc nghiệm"
     },
     "listQuiz": {
         "title": "Bài kiểm tra",

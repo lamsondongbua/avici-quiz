@@ -15,6 +15,19 @@ body{
 
 .app-container{
     .header-container{
+        .brand-icon{
+            font-size: 30px;
+            color: rgb(70, 207, 36); 
+            animation: spin 5s infinite linear;
+        }
+        @keyframes spin {
+            from {
+                transform: scale(1) rotate(0deg);
+            }
+            to {
+                transform: scale(1) rotate(360deg);
+            }
+        }
         
         .btn-login{
             border-radius: 5px;

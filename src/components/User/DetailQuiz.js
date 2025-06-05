@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, NavLink } from "react-router-dom";
 import { getDataQuiz, postSubmitQuiz } from "../../services/apiServices";
 import _ from 'lodash'
 import './DetailQuiz.scss'
@@ -7,7 +7,7 @@ import Question from "./Question";
 import ModalResult from './ModalResult'
 import RightContent from "./Time_NumberQuestion/RightContent";
 import { useTranslation, Trans } from 'react-i18next'
-
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 const DetailQuiz = (props) => {
     const { t } = useTranslation();
     //lấy tham số trên URL
@@ -151,38 +151,51 @@ const DetailQuiz = (props) => {
     }
 
     return (
-        <div className="detail-quiz-container">
-            <div className="left-content">
-                <div className="title">
-                    {t('detailQuiz.title')} {quizId}: {location?.state?.quizTitle}
+        <>
+            <Breadcrumb className = "quiz-detail-new-header">
+                <NavLink to='/' className="breadcrumb-item">
+                    {t('detailQuiz.home')}
+                </NavLink>
+                <NavLink to='/users' className="breadcrumb-item">
+                    {t('detailQuiz.user')}
+                </NavLink>
+                <Breadcrumb.Item active>
+                    {t('detailQuiz.quiz')}
+                </Breadcrumb.Item>
+            </Breadcrumb>
+            <div className="detail-quiz-container">
+                <div className="left-content">
+                    <div className="title">
+                        {t('detailQuiz.title')} {quizId}: {location?.state?.quizTitle}
+                    </div>
+                    <hr/>
+                    <div className="q-body">
+                        <img/>
+                    </div>
+                    <div className="q-content">
+                        <Question handleCheckbox = {handleCheckbox} currentQuestion = {currentQuestion} data={dataQuiz && dataQuiz.length > 0 ? dataQuiz[currentQuestion] : []}/>
+                    </div>
+                    <div className="footer">
+                        <button className="btn btn-secondary" onClick={() => handlePrev()}>{t('detailQuiz.prev')}</button>
+                        <button className="btn btn-primary" onClick={() => handleNext()}>{t('detailQuiz.next')}</button>
+                        <button className="btn btn-warning" onClick={() => handleFinish()}>{t('detailQuiz.finish')}</button>
+                    </div>
                 </div>
-                <hr/>
-                <div className="q-body">
-                    <img/>
+                <div className="right-content">
+                    <RightContent 
+                        dataQuiz = {dataQuiz}
+                        handleFinish = {handleFinish}
+                        setIndex = {setCurrentQuestion}
+                    />
                 </div>
-                <div className="q-content">
-                    <Question handleCheckbox = {handleCheckbox} currentQuestion = {currentQuestion} data={dataQuiz && dataQuiz.length > 0 ? dataQuiz[currentQuestion] : []}/>
-                </div>
-                <div className="footer">
-                    <button className="btn btn-secondary" onClick={() => handlePrev()}>{t('detailQuiz.prev')}</button>
-                    <button className="btn btn-primary" onClick={() => handleNext()}>{t('detailQuiz.next')}</button>
-                    <button className="btn btn-warning" onClick={() => handleFinish()}>{t('detailQuiz.finish')}</button>
-                </div>
-            </div>
-            <div className="right-content">
-                <RightContent 
-                    dataQuiz = {dataQuiz}
-                    handleFinish = {handleFinish}
-                    setIndex = {setCurrentQuestion}
+                <ModalResult
+                    show = {isShowModalResult}
+                    setShow = {setIsShowModalResult}
+                    dataModalResult = {dataModalResult}
+
                 />
             </div>
-            <ModalResult
-                show = {isShowModalResult}
-                setShow = {setIsShowModalResult}
-                dataModalResult = {dataModalResult}
-
-            />
-        </div>
+        </>
     )
 }
 
