@@ -1,19 +1,27 @@
 import Modal from 'react-bootstrap/Modal';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import UserInfor from './UserInfor'; 
+import './Share.scss'
 const Profile = (props) => {
     const {show, setShow} = props;
     const handleClose =() => {
         setShow(false)
     };
+    const user = {
+        email: "user@example.com",
+        username: "johndoe",
+        password: "secret123"
+    };
     return (
-        <>
+        <div className='profile'>
             <Modal
                 show = {show}
                 onHide = {handleClose}
                 size = "xl"
                 backdrop = 'static'
                 className = 'modal-profile'
+                height = "300px"
             >
                 <Modal.Header closeButton>
                     <Modal.Title>Profile</Modal.Title>
@@ -26,7 +34,7 @@ const Profile = (props) => {
                         justify
                     >
                         <Tab eventKey="home" title="Main Infor">
-                            Your information
+                            <UserInfor user={user} />
                         </Tab>
                         <Tab eventKey="profile" title="Change password">
                             Change password
@@ -37,7 +45,7 @@ const Profile = (props) => {
                     </Tabs>
                 </Modal.Body>
             </Modal>
-        </>
+        </div>
     )
 }
 

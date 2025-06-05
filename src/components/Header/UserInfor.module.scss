@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+$primary-color: #00e5ff;
+$primary-color-light: #00fffebb;
+$primary-color-dark: #005f7f;
+$background-gradient-start: #001f3f;
+$background-gradient-end: #003a6b;
+$border-opacity: 0.99;
+
+// ❌ Xóa .modalOverlay vì không còn dùng modal riêng
+
+.modalContent {
+  background: linear-gradient(145deg, $background-gradient-start, $background-gradient-end);
+  padding: 2.5rem 3rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto; // Center inside tab
+  box-shadow:
+    0 0 15px rgba(0, 229, 255, 0.66),
+    0 0 35px rgba(0, 229, 255, 0.66),
+    0 0 75px rgba(0, 229, 255, 0.66);
+  color: #cdf9ff;
+  font-family: 'Montserrat', sans-serif;
+  animation: zoomInModal 0.4s ease forwards;
+}
+
+@keyframes zoomInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modalHeader {
+  font-size: 1.6rem;
+  margin-bottom: 1.8rem;
+  font-weight: 900;
+  border-bottom: 2px solid rgba($primary-color, $border-opacity);
+  padding-bottom: 0.6rem;
+  text-align: center;
+  text-shadow:
+    0 0 5px $primary-color,
+    0 0 15px $primary-color;
+}
+
+// ❌ Xóa .modalCloseButton vì không cần nút đóng
+// Nếu vẫn giữ để tái sử dụng ở nơi khác, bạn có thể để lại nhưng không render ở JSX
+
+.profileInfo {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  row-gap: 1.1rem;
+  column-gap: 1.4rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
+.profileLabel {
+  font-weight: 800;
+  color: #00bcd4;
+  text-shadow: 0 0 8px #00bcd4;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  align-self: center;
+}
+
+.profileValue {
+  color: #cdf9ff;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba($primary-color, 0.27), rgba($primary-color-dark, 0.53));
+  padding: 6px 14px;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 12px rgba($primary-color, 0.66),
+    0 0 6px rgba($primary-color, 0.8);
+  user-select: text;
+  word-break: break-word;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, $primary-color-light, #007f9fcc);
+    box-shadow:
+      inset 0 0 20px $primary-color-light,
+      0 0 12px $primary-color-light,
+      0 0 14px $primary-color-light;
+  }
+}
