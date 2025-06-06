@@ -7,15 +7,18 @@ $background-gradient-start: #001f3f;
 $background-gradient-end: #003a6b;
 $border-opacity: 0.99;
 
-// ❌ Xóa .modalOverlay vì không còn dùng modal riêng
 
 .modalContent {
   background: linear-gradient(145deg, $background-gradient-start, $background-gradient-end);
-  padding: 2.5rem 3rem;
+  padding: 2rem 3rem; // tăng thêm padding
   border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Căn giữa nội dung
   width: 100%;
-  max-width: 600px;
-  margin: 0 auto; // Center inside tab
+  max-width: 800px; // tăng chiều rộng
+  min-height: 200px; // tăng chiều cao tối thiểu
+  margin: 1rem auto; // thêm margin-top/bottom để tạo khoảng trống
   box-shadow:
     0 0 15px rgba(0, 229, 255, 0.66),
     0 0 35px rgba(0, 229, 255, 0.66),
@@ -48,8 +51,6 @@ $border-opacity: 0.99;
     0 0 15px $primary-color;
 }
 
-// ❌ Xóa .modalCloseButton vì không cần nút đóng
-// Nếu vẫn giữ để tái sử dụng ở nơi khác, bạn có thể để lại nhưng không render ở JSX
 
 .profileInfo {
   display: grid;
@@ -71,6 +72,7 @@ $border-opacity: 0.99;
 
 .profileValue {
   color: #cdf9ff;
+  text-align: center;
   font-weight: 600;
   background: linear-gradient(135deg, rgba($primary-color, 0.27), rgba($primary-color-dark, 0.53));
   padding: 6px 14px;
@@ -88,5 +90,56 @@ $border-opacity: 0.99;
       inset 0 0 20px $primary-color-light,
       0 0 12px $primary-color-light,
       0 0 14px $primary-color-light;
+  }
+}
+
+.uploadButton {
+  background: linear-gradient(135deg, rgba($primary-color, 0.27), rgba($primary-color-dark, 0.53));
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow:
+    inset 0 0 12px rgba($primary-color, 0.66),
+    0 0 6px rgba($primary-color, 0.8);
+  font-weight: 600;
+  color: #cdf9ff;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  transition: all 0.3s ease;
+  user-select: none;
+
+  &:hover {
+    background: linear-gradient(135deg, $primary-color-light, #007f9fcc);
+    box-shadow:
+      inset 0 0 20px $primary-color-light,
+      0 0 12px $primary-color-light,
+      0 0 14px $primary-color-light;
+  }
+}
+
+.updateButton {
+  margin-top: 2rem;
+  background: linear-gradient(135deg, rgba($primary-color, 0.27), rgba($primary-color-dark, 0.53));
+  padding: 10px 24px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center; 
+  font-weight: 700;
+  font-size: 1rem;
+  color: #cdf9ff;
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    inset 0 0 12px rgba($primary-color, 0.66),
+    0 0 6px rgba($primary-color, 0.8);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, $primary-color-light, #007f9fcc);
+    box-shadow:
+      inset 0 0 20px $primary-color-light,
+      0 0 12px $primary-color-light,
+      0 0 14px $primary-color-light;
+    transform: translateY(-1px);
   }
 }

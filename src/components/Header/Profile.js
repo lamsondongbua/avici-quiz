@@ -8,11 +8,7 @@ const Profile = (props) => {
     const handleClose =() => {
         setShow(false)
     };
-    const user = {
-        email: "user@example.com",
-        username: "johndoe",
-        password: "secret123"
-    };
+
     return (
         <div className='profile'>
             <Modal
@@ -34,7 +30,7 @@ const Profile = (props) => {
                         justify
                     >
                         <Tab eventKey="home" title="Main Infor">
-                            <UserInfor user={user} />
+                            <UserInfor/>
                         </Tab>
                         <Tab eventKey="profile" title="Change password">
                             Change password
