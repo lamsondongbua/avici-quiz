@@ -1,3 +1,86 @@
-.modal-content{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+:root {
+    --gradient-colors: linear-gradient(
+      270deg,
+      #ff0057,
+      #ff6a00,
+      #ffde00,
+      #00ff99,
+      #0055ff,
+      #9e00ff,
+      #ff0057
+    );
+    --animation-duration: 6s;
+}
+
+.modal-content {
     height: 470px;
+}
+
+.change-password-container {
+    margin-left: 30px;
+
+    label {
+        font-size: 25px;
+        font-weight: 600;
+        font-style: italic;
+        margin-top: 17px; 
+        margin-right: 15px;
+    }
+
+    .running-label {
+        font-weight: 600;
+        font-size: 25px; /* Adjusted to match the label size */
+        position: relative;
+        background: var(--gradient-colors);
+        background-size: 1400% 1400%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: running-gradient var(--animation-duration) linear infinite;
+        user-select: none;
+    }
+
+    @keyframes running-gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        100% {
+            background-position: 100% 50%;
+        }
+    }
+
+    input {
+        width: 80%;
+        display: flex;
+        justify-content: flex-end;
+        border-radius: 5px;
+        height: 35px;
+    }
+    button{
+        margin-top: 10px;
+    }
+    .btn-animatic {
+        cursor: pointer;
+        background-color: #3b82f6;
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem;
+        border: none;
+        border-bottom: 4px solid #2563eb;
+        transition: all 0.2s ease-in-out;
+      
+        &:hover {
+          filter: brightness(1.1);
+          transform: translateY(-1px);
+          border-bottom-width: 6px;
+        }
+      
+        &:active {
+          filter: brightness(0.9);
+          transform: translateY(2px);
+          border-bottom-width: 2px;
+        }
+      }
+      
 }

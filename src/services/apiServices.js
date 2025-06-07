@@ -127,4 +127,7 @@ const updateUserInfor =  (username,image) => {
     return instance.post('api/v1/profile', data);
 }
 
-export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister,getQuizByUser, getDataQuiz, postSubmitQuiz, postCreateNewQuiz, getAllQuizForAdmin, putUpdateQuizForAdmin, deleteQuizForAdmin, postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion, postAssignQuiz, getQuizWithQA, postUpsertQA, logout, getOverview, updateUserInfor}
+const UpdatePassword = (current_password, new_password) => {
+    return instance.post('api/v1/change-password', {current_password : current_password, new_password: new_password});
+}
+export {postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister,getQuizByUser, getDataQuiz, postSubmitQuiz, postCreateNewQuiz, getAllQuizForAdmin, putUpdateQuizForAdmin, deleteQuizForAdmin, postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion, postAssignQuiz, getQuizWithQA, postUpsertQA, logout, getOverview, updateUserInfor, UpdatePassword}

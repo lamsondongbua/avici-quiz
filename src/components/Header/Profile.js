@@ -2,6 +2,7 @@ import Modal from 'react-bootstrap/Modal';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import UserInfor from './UserInfor'; 
+import ChangePassword from './ChangePassword';
 import './Share.scss'
 const Profile = (props) => {
     const {show, setShow} = props;
@@ -33,7 +34,7 @@ const Profile = (props) => {
                             <UserInfor/>
                         </Tab>
                         <Tab eventKey="profile" title="Change password">
-                            Change password
+                            <ChangePassword/>
                         </Tab>
                         <Tab eventKey="history" title="History">
                             History do quiz
