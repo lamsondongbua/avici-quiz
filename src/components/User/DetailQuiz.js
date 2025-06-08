@@ -149,6 +149,7 @@ const DetailQuiz = (props) => {
             }    
         }
     }
+    console.log('check data modal result: ',dataModalResult);
 
     return (
         <>

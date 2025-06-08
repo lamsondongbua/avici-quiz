@@ -100,8 +100,37 @@
 }
 .modal-result{
     height: 253px;
+    overflow: hidden;
 }
 
+//show-answer
+.modal-show-answer{
+    padding-left: -3px;
+    overflow: hidden;
+}
+.scroll-container {
+    max-height: 327px;
+    overflow-y: auto; /* Keep this to enable scrolling */
+    position: relative;
+
+    // Hide scrollbar on all browsers
+    &::-webkit-scrollbar {
+        width: 0; /* Hide scrollbar */
+        background: transparent; /* Hide background */
+    }
+
+    scrollbar-width: none; // For Firefox
+
+
+    // Adjusting the answer list to have a fixed height and scroll
+    .answer-list {
+        max-height: 250px; // Set a limit for the list height
+        overflow-y: auto; // Enable vertical scrolling
+        padding: 10px; // Add some padding if needed
+        background-color: #f8f9fa; // Optional: background to differentiate from modal
+        border-radius: 5px; // Optional: rounded corners for aesthetics
+    }
+}
 
 
 

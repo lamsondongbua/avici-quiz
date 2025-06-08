@@ -3,10 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useTranslation, Trans } from 'react-i18next'
 import { useNavigate } from "react-router-dom";
-
+import ShowAnswer from './ShowAnswer';
 
 const ModalResult = (props) => {
     const { t } = useTranslation();
+    const [isShowAnswer, setIsShowAnswer] = useState(false);
 
     const {show, setShow, dataModalResult} = props;
 
@@ -17,7 +18,7 @@ const ModalResult = (props) => {
            
     }
     const handleShowAnswer  = () => {
-        alert('Đang làm dở nha - Vô ModalResult nhé');
+        setIsShowAnswer(true);
     }
     //check data cho modal result
     console.log(dataModalResult);
@@ -50,6 +51,9 @@ const ModalResult = (props) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+            <div>
+                <ShowAnswer dataModalAnswer= {dataModalResult} showAnswer= {isShowAnswer} setShowAnswer = {setIsShowAnswer}/>
+            </div>
         </>
     );
 }
