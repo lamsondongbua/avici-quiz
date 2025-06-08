@@ -1,8 +1,6 @@
 import { Navigate, useNavigate } from "react-router-dom";
-import Test1 from "./Test1";
-import Test2 from "./Test2";
 import { useSelector } from "react-redux";
-import { useTranslation, Trans } from 'react-i18next'
+import { useTranslation} from 'react-i18next'
 
 const PrivateRoute = (props) => {
     const { t } = useTranslation();

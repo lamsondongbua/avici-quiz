@@ -5,7 +5,7 @@ const CountDown = (props) => {
     const { t } = useTranslation();
 
     const {onTimeUp} = props;
-    const [count, setCount] = useState(10);
+    const [count, setCount] = useState(60);
     //hàm chuyển giây thành giờ và phút
     const toHHMMSS = (sesc) => {
         const sec_num = parseInt(sesc, 10);

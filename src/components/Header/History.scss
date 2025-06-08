@@ -1,0 +1,33 @@
+.history-container{
+    height: 300px;
+    overflow-y: hidden;
+}
+
+.scroll-container {
+    max-height: 327px;
+    overflow-y: auto; /* Keep this to enable scrolling */
+    position: relative;
+
+    // Hide scrollbar on all browsers
+    &::-webkit-scrollbar {
+        width: 0; /* Hide scrollbar */
+        background: transparent; /* Hide background */
+    }
+
+    scrollbar-width: none; // For Firefox
+
+    // Ensure the table takes up the full width
+    .table {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    // Fix for sticky header if desired
+    thead th {
+        position: sticky;
+        top: 0;
+        background-color: #343a40; // Color of .table-dark
+        color: white;
+        z-index: 1;
+    }
+}

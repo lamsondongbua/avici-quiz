@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
+
+.modal-profile {
+    height: 500px;
+    overflow-y: hidden;
+}
+
 :root {
     --gradient-colors: linear-gradient(
       270deg,
@@ -14,13 +20,11 @@
     --animation-duration: 6s;
 }
 
-.modal-content {
-    height: 470px;
-}
 
 .change-password-container {
     margin-left: 30px;
-
+    height: 327px;
+    overflow-y: hidden;
     label {
         font-size: 25px;
         font-weight: 600;

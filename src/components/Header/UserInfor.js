@@ -79,32 +79,34 @@ const UserInfor = () => {
   };
   console.log('after', account);
   return (
-    <div className={styles.modalContent} aria-labelledby="modalTitle" role="region">
-    <h2 className={styles.modalHeader} id="modalTitle">User Profile Information</h2>
-    <div className={styles.profileInfo}>
-    <label htmlFor="username" className={styles.profileLabel}>Username:</label>
-    <input
-           id="username"
-           className={styles.profileValue}
-           value={username}
-           onChange={handleUsernameChange}
-           type="text"
-           aria-required="true"
-         />
-    
-        <label className={styles.profileLabel} htmlFor="imageUpload">Upload User Image:</label>
-        <label htmlFor="imageUpload" className={styles.uploadButton} tabIndex={0}>
-          {fileName || 'Choose File'}
-          <input
-            id="imageUpload"
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            hidden
+    <div className='user_infor'>
+      <div className={styles.modalContent} aria-labelledby="modalTitle" role="region">
+      <h2 className={styles.modalHeader} id="modalTitle">User Profile Information</h2>
+      <div className={styles.profileInfo}>
+      <label htmlFor="username" className={styles.profileLabel}>Username:</label>
+      <input
+            id="username"
+            className={styles.profileValue}
+            value={username}
+            onChange={handleUsernameChange}
+            type="text"
+            aria-required="true"
           />
-        </label>
+      
+          <label className={styles.profileLabel} htmlFor="imageUpload">Upload User Image:</label>
+          <label htmlFor="imageUpload" className={styles.uploadButton} tabIndex={0}>
+            {fileName || 'Choose File'}
+            <input
+              id="imageUpload"
+              type="file"
+              accept="image/*"
+              onChange={handleFileChange}
+              hidden
+            />
+          </label>
+        </div>
+        <button onClick={handleSubmit} className={styles.updateButton} type="button">Update</button>
       </div>
-      <button onClick={handleSubmit} className={styles.updateButton} type="button">Update</button>
     </div>
   );
 };
