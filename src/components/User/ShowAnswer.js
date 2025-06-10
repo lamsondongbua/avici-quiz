@@ -1,17 +1,17 @@
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './DetailQuiz.scss';
-import PerfectScrollbar from 'react-perfect-scrollbar'
-
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import { useTranslation } from 'react-i18next';
 
 const ShowAnswer = (props) => {
     const { showAnswer, setShowAnswer, dataModalAnswer } = props;
+    const { t } = useTranslation();
 
     const handleClose = () => {
         setShowAnswer(false);
-    }
+    };
 
-    console.log('data bên show answer',dataModalAnswer);
     return (
         <div className='scroll-container modal-show-answer'>
             <PerfectScrollbar>
@@ -21,33 +21,34 @@ const ShowAnswer = (props) => {
                     backdrop="static"
                 >
                     <Modal.Header closeButton>
-                        <Modal.Title>Correct Answers:</Modal.Title>
+                        <Modal.Title>{t('showAnswer.title')}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {/* Kiểm tra xem dataModalAnswer có dữ liệu không */}
                         {dataModalAnswer && dataModalAnswer.quizData && dataModalAnswer.quizData.length > 0 ? (
                             <div className='answer-list'>
                                 <ul>
                                     {dataModalAnswer.quizData.map((question, index) => (
                                         <li key={index}>
-                                            <p>Câu hỏi số {index + 1}: {question.systemAnswers[0]?.description}</p>
+                                            <p>
+                                                {t('showAnswer.questionNumber', { number: index + 1 })}: {question.systemAnswers[0]?.description}
+                                            </p>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
                         ) : (
-                            <p>Không có câu hỏi nào.</p>
+                            <p>{t('showAnswer.noQuestion')}</p>
                         )}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="primary" onClick={handleClose}>
-                            Close
+                            {t('showAnswer.close')}
                         </Button>
                     </Modal.Footer>
                 </Modal>
             </PerfectScrollbar>
         </div>
     );
-}
+};
 
 export default ShowAnswer;

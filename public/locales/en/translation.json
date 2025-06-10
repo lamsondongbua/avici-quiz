@@ -216,6 +216,65 @@
         "imageTitle": "Question Image"
     },
     "layout": {
-        "notFound": "404. Not found data with your current URL"    }
+        "notFound": "404. Not found data with your current URL"    
+    },
+    "dashboard": {
+        "title": "Analytics Dashboard",
+        "totalUsers": "Total Users",
+        "totalQuizzes": "Total Quizzes",
+        "totalQuestions": "Total Questions",
+        "totalAnswers": "Total Answers",
+        "chart": {
+            "quizzes": "Quizzes",
+            "questions": "Questions",
+            "answers": "Answers",
+            "qz": "Qz",
+            "qs": "Qs",
+            "as": "As"
+        }
+    },
+    "profile": {
+        "title": "Profile",
+        "tab": {
+            "main": "Main Info",
+            "changePassword": "Change Password",
+            "history": "History"
+        }
+    },
+    "history": {
+        "id": "ID",
+        "quizName": "Quiz Name",
+        "totalQuestions": "Total Questions",
+        "totalCorrect": "Total Correct",
+        "date": "Date",
+        "noData": "No data found"
+    },
+    "changePassword": {
+        "currentPassword": "Current Password",
+        "currentPasswordPlaceholder": "Enter the current password",
+        "newPassword": "New Password",
+        "newPasswordPlaceholder": "Enter the new password",
+        "confirmPassword": "Confirm New Password",
+        "confirmPasswordPlaceholder": "Confirm the password",
+        "confirmButton": "Confirm",
+        "confirmError": "The confirm password does not match the new password"
+    },
+    "userInfo": {
+        "title": "User Profile Information",
+        "username": "Username:",
+        "upload": "Upload User Image:",
+        "chooseFile": "Choose File",
+        "hasImage": "User had image! Click here if you would like to change!!!",
+        "update": "Update"
+    },
+    "showAnswer": {
+        "title": "Correct Answers:",
+        "questionNumber": "Question {{number}}",
+        "noQuestion": "No questions available.",
+        "close": "Close"
+    }
+
+
+
 
 }

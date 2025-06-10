@@ -216,5 +216,66 @@
         "imageTitle": "Hình ảnh câu hỏi"
     },
     "layout": {
-        "notFound": "404. Không tìm thấy dữ liệu với URL hiện tại"    }
+        "notFound": "404. Không tìm thấy dữ liệu với URL hiện tại"    
+    },
+    "dashboard": {
+        "title": "Bảng điều khiển thống kê",
+        "totalUsers": "Tổng số người dùng",
+        "totalQuizzes": "Tổng số bài kiểm tra",
+        "totalQuestions": "Tổng số câu hỏi",
+        "totalAnswers": "Tổng số câu trả lời",
+        "chart": {
+            "quizzes": "Bài kiểm tra",
+            "questions": "Câu hỏi",
+            "answers": "Câu trả lời",
+            "qz": "BT",
+            "qs": "CH",
+            "as": "TL"
+        }
+    },
+    "profile": {
+        "title": "Hồ sơ cá nhân",
+        "tab": {
+            "main": "Thông tin chính",
+            "changePassword": "Đổi mật khẩu",
+            "history": "Lịch sử"
+        }
+    },
+    "history": {
+        "id": "Mã",
+        "quizName": "Tên bài kiểm tra",
+        "totalQuestions": "Tổng số câu hỏi",
+        "totalCorrect": "Số câu đúng",
+        "date": "Ngày làm bài",
+        "noData": "Không tìm thấy dữ liệu"
+    },
+    "changePassword": {
+        "currentPassword": "Mật khẩu hiện tại",
+        "currentPasswordPlaceholder": "Nhập mật khẩu hiện tại",
+        "newPassword": "Mật khẩu mới",
+        "newPasswordPlaceholder": "Nhập mật khẩu mới",
+        "confirmPassword": "Xác nhận mật khẩu mới",
+        "confirmPasswordPlaceholder": "Xác nhận lại mật khẩu",
+        "confirmButton": "Xác nhận",
+        "confirmError": "Mật khẩu xác nhận không trùng khớp với mật khẩu mới"
+    },
+    "userInfo": {
+        "title": "Thông tin người dùng",
+        "username": "Tên người dùng:",
+        "upload": "Tải ảnh người dùng:",
+        "chooseFile": "Chọn tệp",
+        "hasImage": "Người dùng đã có ảnh! Nhấn vào đây nếu bạn muốn thay đổi!!!",
+        "update": "Cập nhật"
+    },
+    "showAnswer": {
+        "title": "Câu trả lời đúng:",
+        "questionNumber": "Câu hỏi số {{number}}",
+        "noQuestion": "Không có câu hỏi nào.",
+        "close": "Đóng"
+    }
+
+
+
+
+
 }
