@@ -4,11 +4,11 @@ import {toast} from 'react-toastify';
 import Select from 'react-select'
 import { postCreateNewQuiz } from '../../../../services/apiServices'
 import TableQuiz from './TableQuiz';
-import { Accordion } from 'react-bootstrap';
 import QuizQA from './QuizQA';
 import AssignQuiz from './AssignQuiz';
 import { useTranslation, Trans } from 'react-i18next'
-
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
 
 const options = [
     {value: 'EASY', label: 'EASY'},
@@ -62,81 +62,73 @@ const ManageQuiz = (props) => {
 
     return (
         <div className="quiz-container">
-            <Accordion defaultActiveKey= '0'>
-                <Accordion.Item eventKey='0'>
-                    <Accordion.Header><b>{t('managequiz.header')}</b></Accordion.Header>
-                    <Accordion.Body>
-                        <div className="add-new">
-                            <fieldset className="border rounded-3 p-3">
-                                <legend className="float-none w-auto px-3">{t('managequiz.addNewQuiz')}</legend>
-                                <div className="form-floating mb-3">
-                                    <input 
-                                        type="text" 
-                                        className="form-control" 
-                                        placeholder={t('managequiz.placeholder.quizName')}
-                                        value={namequiz}
-                                        onChange={(e) => setNameQuiz(e.target.value)}
-                                    />
-                                    <label>{t('managequiz.nameQuiz')}</label>
-                                </div>
-                                <div className="form-floating">
-                                    <input 
-                                        type="text" 
-                                        className="form-control" 
-                                        placeholder={t('managequiz.placeholder.description')}
-                                        value={description}
-                                        onChange={(e) => setDescription(e.target.value)}
-                                    />
-                                    <label>{t('managequiz.description')}</label>
-                                </div>
-                                <div className='my-3'>
-                                    <Select
-                                        defaultValue = {type}
-                                        onChange = {setType}
-                                        options = {options}
-                                        placeholder={t('managequiz.placeholder.quizType')}
-                                    />
-                                </div>
-                                <div className='more-actions form-group'>
-                                    <label className='mb-1'>{t('managequiz.uploadImage')}</label>
-                                    <input 
-                                        type='file' 
-                                        className='form-control'
-                                        onChange={(event) => handleChangeFile(event)}
-                                        ref = {fileInputRef}
-                                    />
-                                </div>
-                                <div className='mt-3'>
-                                    <button 
-                                        className='btn btn-warning'
-                                        onClick={() => handleSubmitQuiz()}
-                                    >
-                                        {t('managequiz.save')}
-                                    </button>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div className="list-detail">
-                            <TableQuiz reloadList={reloadList}/>
-                        </div>
-                    </Accordion.Body>
-                </Accordion.Item>
-
-
-                <Accordion.Item eventKey='1'>
-                    <Accordion.Header><b>{t('managequiz.updateQA')}</b></Accordion.Header>
-                    <Accordion.Body>
-                        <QuizQA/>
-                    </Accordion.Body>
-                </Accordion.Item>
-
-                <Accordion.Item eventKey='2'>
-                    <Accordion.Header><b>{t('managequiz.assignToUsers')}</b></Accordion.Header>
-                    <Accordion.Body>
-                        <AssignQuiz/>
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
+            <Tabs
+                id="justify-tab-example"
+                className="mb-3"
+                justify
+            >
+                <Tab title={t('managequiz.header')} eventKey = 'ManageQuiz'>
+                    <div className="add-new">
+                        <fieldset className="border rounded-3 p-3">
+                            <legend className="float-none w-auto px-3">{t('managequiz.addNewQuiz')}</legend>
+                            <div className="form-floating mb-3">
+                                <input 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder={t('managequiz.placeholder.quizName')}
+                                    value={namequiz}
+                                    onChange={(e) => setNameQuiz(e.target.value)}
+                                />
+                                <label>{t('managequiz.nameQuiz')}</label>
+                            </div>
+                            <div className="form-floating">
+                                <input 
+                                    type="text" 
+                                    className="form-control" 
+                                    placeholder={t('managequiz.placeholder.description')}
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                />
+                                <label>{t('managequiz.description')}</label>
+                            </div>
+                            <div className='my-3'>
+                                <Select
+                                    defaultValue = {type}
+                                    onChange = {setType}
+                                    options = {options}
+                                    placeholder={t('managequiz.placeholder.quizType')}
+                                />
+                            </div>
+                            <div className='more-actions form-group'>
+                                <label className='mb-1'>{t('managequiz.uploadImage')}</label>
+                                <input 
+                                    type='file' 
+                                    className='form-control'
+                                    onChange={(event) => handleChangeFile(event)}
+                                    ref = {fileInputRef}
+                                />
+                            </div>
+                            <div className='mt-3'>
+                                <button 
+                                    className='btn btn-warning'
+                                    onClick={() => handleSubmitQuiz()}
+                                >
+                                    {t('managequiz.save')}
+                                </button>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div className="list-detail">
+                        <TableQuiz reloadList={reloadList}/>
+                    </div>
+                </Tab>
+                <Tab eventKey='Updata Quiz Q/A' title={t('managequiz.updateQA')}>
+                    <QuizQA/>
+                </Tab>
+                <Tab eventKey='Assign Quiz' title={t('managequiz.assignToUsers')}>
+                    <AssignQuiz/>
+                </Tab>
+            </Tabs>
         </div>
     )
 }

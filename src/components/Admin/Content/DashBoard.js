@@ -4,6 +4,7 @@ import {ResponsiveContainer,BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Lege
 import {getOverview} from '../../../services/apiServices';
 import { useEffect, useState } from 'react';
 
+
 const DashBoard = (props) => {
     const [dataOverview, setDataOverview] = useState([]);
     const [dataChart, setDataChart] = useState([])
@@ -23,19 +24,10 @@ const DashBoard = (props) => {
             Qs = response?.DT?.others?.countQuestions;
             As = response?.DT?.others?.countAnswers;
             const data = [
-                {
-                  "name": "Quizzes",
-                  "Qz": Qz
-                },
-                {
-                  "name": "Questions",
-                  "Qs": Qs
-                },
-                {
-                  "name": "Answers",
-                  "As": As
-                }
-            ]
+                { name: "Quizzes", value: Qz, fill: "#59A14F" },
+                { name: "Questions", value: Qs, fill: "#F28E2B" },
+                { name: "Answers", value: As, fill: "#E15759" }
+            ];
             setDataChart(data);            
         }
     }
@@ -91,18 +83,23 @@ const DashBoard = (props) => {
                     </div>
                 </div>
                 <div className='c-right'>
-                    <ResponsiveContainer width="95%" height={"100%"}>
-                        <BarChart data={dataChart}>
-                        <CartesianGrid stroke="#e0e0e0" strokeDasharray="0" vertical={false} />
-                        <XAxis dataKey="name" />
-                            <YAxis domain={[0,100]} ticks={[0,25,50,75,100]}/>
-                            <Tooltip />
-                            <Legend />
-                            <Bar dataKey="Qz" fill="#59A14F" />
-                            <Bar dataKey="Qs" fill="#F28E2B" />
-                            <Bar dataKey="As" fill="#E15759" />
-                        </BarChart>
-                    </ResponsiveContainer>    
+                <ResponsiveContainer width="95%" height={"100%"}>
+                <BarChart data={dataChart} barSize={50}>
+                    <CartesianGrid stroke="#e0e0e0" strokeDasharray="0" vertical={false} />
+                    <XAxis dataKey="name" />
+                    <YAxis domain={[0,200]} ticks={[0,25,50,75,100,125,150,175,200]} />
+                    <Tooltip />
+                    <Legend content={() => (
+                    <div style={{ display: "flex", justifyContent: "center", gap: 20 }}>
+                        <div style={{ color: "#59A14F" }}>🟩 Qz</div>
+                        <div style={{ color: "#F28E2B" }}>🟧 Qs</div>
+                        <div style={{ color: "#E15759" }}>🟥 As</div>
+                    </div>
+                    )}/>
+                    <Bar dataKey="value" />
+                </BarChart>
+                </ResponsiveContainer>
+    
                 </div>
             </div>
         </div>

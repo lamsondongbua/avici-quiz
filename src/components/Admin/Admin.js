@@ -7,11 +7,14 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 import { useTranslation, Trans } from 'react-i18next'
 import Language from "../Header/Language";
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import Profile from "../Header/Profile";
+import { useNavigate } from "react-router-dom";
 
 const Admin  = (props) => {
     const { t } = useTranslation();
     const [collapsed, setCollapsed] = useState(false);
-
+    const [isShowModalProfile, setIsShowModalProfile] = useState(false);
+    const navigate = useNavigate();
     return (
         <div className="admin-container">
             <div className="admin-sidebar">
@@ -23,11 +26,11 @@ const Admin  = (props) => {
                         <FaBars className="leftside"/>
                     </span>
                     <div className="rightside">
-                        <NavDropdown title={t('header.settings')} id="basic-nav-dropdown">
-                            <NavDropdown.Item >{t('header.profile')}</NavDropdown.Item>
-                            <NavDropdown.Item >{t('header.logout')}</NavDropdown.Item>
-                        </NavDropdown>
                         <Language/>
+                        <NavDropdown title={t('header.settings')} id="basic-nav-dropdown">
+                            <NavDropdown.Item onClick={() => setIsShowModalProfile(true)}>{t('header.profile')}</NavDropdown.Item>
+                            <NavDropdown.Item onClick={() => navigate('/login')}>{t('header.logout')}</NavDropdown.Item>
+                        </NavDropdown>
                     </div>
                 </div>
 
@@ -38,6 +41,7 @@ const Admin  = (props) => {
                         </PerfectScrollbar>
                     </div>
                 </PerfectScrollbar>
+                <Profile show = {isShowModalProfile} setShow = {setIsShowModalProfile}/>
             </div>
 
         </div>
