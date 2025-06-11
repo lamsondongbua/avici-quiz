@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/avici-quiz/static/css/main.06f762e2.css",
+    "main.js": "/avici-quiz/static/js/main.c5c8f522.js",
+    "static/js/453.81639328.chunk.js": "/avici-quiz/static/js/453.81639328.chunk.js",
+    "static/media/video-homepage.mp4": "/avici-quiz/static/media/video-homepage.64c3c874560db383e773.mp4",
+    "static/media/bg2.jpg": "/avici-quiz/static/media/bg2.0533a82ef0c6e86040fa.jpg",
+    "index.html": "/avici-quiz/index.html",
+    "static/media/getFetch.cjs": "/avici-quiz/static/media/getFetch.c780682470504fffbd04.cjs",
+    "main.06f762e2.css.map": "/avici-quiz/static/css/main.06f762e2.css.map",
+    "main.c5c8f522.js.map": "/avici-quiz/static/js/main.c5c8f522.js.map",
+    "453.81639328.chunk.js.map": "/avici-quiz/static/js/453.81639328.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.06f762e2.css",
+    "static/js/main.c5c8f522.js"
+  ]
+}

@@ -1,0 +1,281 @@
+{
+    "homepage": {
+        "title1": "Tạo bài trắc nghiệm theo cách của bạn.",
+        "title2" : "Quiz hay thì ai cũng muốn làm – tạo quiz thông minh ngay hôm nay!",
+        "title3" : {
+            "login" : "Bắt đầu tạo – hoàn toàn miễn phí!",
+            "doing-quiz" : "Làm bài quiz ngay"
+        }
+    },
+    "questions": {
+        "title": "Quản lý câu hỏi",
+        "selectQuiz": "Chọn bài Quiz:",
+        "addQuestions": "Thêm câu hỏi:",
+        "descriptionPlaceholder": "Nhập mô tả cho câu hỏi",
+        "descriptionLabel": "Mô tả cho câu hỏi số {{number}}",
+        "noFile": "Chưa tải tệp nào",
+        "answer": "Đáp án {{number}}",
+        "save": "Lưu câu hỏi"
+    },
+    "assign": {
+        "selectQuiz": "Chọn bài Quiz:",
+        "selectUser": "Chọn người dùng:",
+        "assignButton": "Gán"
+    },
+    "managequiz": {
+        "header": "Quản lý bài Quiz",
+        "addNewQuiz": "Thêm bài Quiz mới",
+        "nameQuiz": "Tên bài Quiz",
+        "description": "Mô tả",
+        "uploadImage": "Tải ảnh lên",
+        "save": "Lưu",
+        "placeholder": {
+        "quizName": "Nhập tên bài Quiz...",
+        "description": "Tạo mô tả cho bài Quiz",
+        "quizType": "Loại bài Quiz..."
+        },
+        "updateQA": "Cập nhật Hỏi/Đáp",
+        "assignToUsers": "Gán cho người dùng"
+    },
+    "modalDelete": {
+        "title": "Xác nhận xóa bài Quiz này?",
+        "body": "Bạn có chắc chắn muốn xóa bài Quiz đã chọn ",
+        "cancel": "Hủy",
+        "confirm": "Xác nhận"
+    },
+    "modalUpdateQuiz": {
+        "title": "Cập nhật bài kiểm tra",
+        "id": "Mã số",
+        "name": "Tên",
+        "description": "Mô tả",
+        "type": "Mức độ",
+        "easy": "DỄ",
+        "medium": "TRUNG BÌNH",
+        "hard": "KHÓ",
+        "upload": "Tải lên hình ảnh",
+        "preview": "Xem trước hình ảnh",
+        "close": "Đóng",
+        "save": "Lưu"
+    },
+    "quizQA": {
+        "selectQuiz": "Chọn bài kiểm tra:",
+        "addQuestions": "Thêm câu hỏi:",
+        "descriptionForQuestion": "Nhập mô tả cho câu hỏi ",
+        "noFile": "Chưa tải lên tệp nào",
+        "answerNumber": "Câu trả lời ",
+        "saveQuestions": "Lưu câu hỏi"
+    },
+    "tableQuiz": {
+        "title": "Danh sách bài kiểm tra",
+        "id": "Mã số",
+        "name": "Tên bài",
+        "description": "Mô tả",
+        "type": "Độ khó",
+        "actions": "Thao tác",
+        "edit": "Chỉnh sửa",
+        "delete": "Xóa"
+    },
+    "manageUser": {
+        "title": "Quản lý người dùng",
+        "addNewUser": "Thêm người dùng mới"
+    },
+    "modalCreateUser": {
+        "title": "Thêm người dùng mới",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "username": "Tên người dùng",
+        "role": "Vai trò",
+        "roleUser": "NGƯỜI DÙNG",
+        "roleAdmin": "QUẢN TRỊ VIÊN",
+        "uploadFileImage": "Tải ảnh lên",
+        "previewImage": "Xem trước ảnh",
+        "close": "Đóng",
+        "save": "Lưu"
+    },
+    "modalDeleteUser": {
+        "title": "Xác nhận xóa người dùng?",
+        "body": "Bạn có chắc muốn xóa người dùng đã chọn ",
+        "cancel": "Hủy",
+        "confirm": "Xác nhận"
+    },
+    "modalUpdateUser": {
+        "title": "Cập nhật người dùng",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "username": "Tên người dùng",
+        "role": "Vai trò",
+        "optionUser": "Người dùng",
+        "optionAdmin": "Quản trị viên",
+        "upload": "Tải ảnh lên",
+        "preview": "Xem trước ảnh",
+        "close": "Đóng",
+        "save": "Lưu"
+    },
+    "view_user": {
+        "title": "Xem người dùng",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "username": "Tên người dùng",
+        "role": "Vai trò",
+        "user": "Người dùng",
+        "admin": "Quản trị viên",
+        "upload": "Tải ảnh lên",
+        "preview": "Xem trước ảnh",
+        "close": "Đóng"
+    },
+    "table_user": {
+        "id": "Mã người dùng",
+        "username": "Tên người dùng",
+        "email": "Email",
+        "role": "Vai trò",
+        "action": "Hành động",
+        "view": "Xem",
+        "update": "Cập nhật",
+        "delete": "Xóa",
+        "no_data": "Không tìm thấy dữ liệu"
+    },
+    "table_user_paginate": {
+        "id": "Mã người dùng",
+        "username": "Tên người dùng",
+        "email": "Email",
+        "role": "Vai trò",
+        "action": "Hành động",
+        "view": "Xem",
+        "update": "Cập nhật",
+        "delete": "Xóa",
+        "no_data": "Không tìm thấy dữ liệu",
+        "pagination_next": "Tiếp >",
+        "pagination_previous": "< Trước"
+    },
+    "sidebar": {
+        "logo": "AVICI QUIZ",
+        "main": "Chính",
+        "dashboard": "Bảng điều khiển",
+        "features": "Chức năng",
+        "manageUsers": "Quản lý người dùng",
+        "manageQuizzes": "Quản lý bài Quiz",
+        "manageQuestions": "Quản lý câu hỏi"
+    },
+    "login": {
+        "noAccount": "Chưa có tài khoản?",
+        "signUp": "Đăng ký",
+        "title": "AVICI QUIZ",
+        "welcome": "Xin chào, bạn là ai?",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "forgotPassword": "Quên mật khẩu?",
+        "loginBtn": "Đăng nhập AVICI QUIZ",
+        "backHome": "Về trang chủ"
+    },
+    "register": {
+        "haveAccount": "Đã có tài khoản?",
+        "login": "Đăng nhập",
+        "title": "AVICI QUIZ",
+        "welcome": "Sẵn sàng bắt đầu hành trình?",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "username": "Tên người dùng",
+        "createAccount": "Tạo tài khoản miễn phí",
+        "goHome": "Về trang chủ"
+    },
+    "header": {
+        "brand": "AVICI QUIZ",
+        "home": "Trang chủ",
+        "users": "Người dùng",
+        "admin": "Quản trị",
+        "login": "Đăng nhập",
+        "signup": "Đăng ký",
+        "settings": "Cài đặt",
+        "profile": "Hồ sơ",
+        "logout": "Đăng xuất"
+    },
+    "detailQuiz": {
+        "title": "Bài kiểm tra",
+        "prev": "Trước",
+        "next": "Tiếp",
+        "finish": "Hoàn thành",
+        "error": "Đã xảy ra lỗi!",
+        "home" : "Trang Chủ",
+        "user" : "Người dùng",
+        "quiz" : "Bài trắc nghiệm"
+    },
+    "listQuiz": {
+        "title": "Bài kiểm tra",
+        "start": "Bắt đầu ngay",
+        "noQuiz": "Bạn hiện chưa có bài kiểm tra nào..."
+    },
+    "modalResult": {
+        "title": "Kết quả của bạn...",
+        "totalQuestions": "Tổng số câu hỏi:",
+        "correctAnswers": "Số câu trả lời đúng:",
+        "showAnswers": "Xem đáp án",
+        "close": "Đóng"
+    },
+    "question": {
+        "title": "Câu hỏi",
+        "imageTitle": "Hình ảnh câu hỏi"
+    },
+    "layout": {
+        "notFound": "404. Không tìm thấy dữ liệu với URL hiện tại"    
+    },
+    "dashboard": {
+        "title": "Bảng điều khiển thống kê",
+        "totalUsers": "Tổng số người dùng",
+        "totalQuizzes": "Tổng số bài kiểm tra",
+        "totalQuestions": "Tổng số câu hỏi",
+        "totalAnswers": "Tổng số câu trả lời",
+        "chart": {
+            "quizzes": "Bài kiểm tra",
+            "questions": "Câu hỏi",
+            "answers": "Câu trả lời",
+            "qz": "BT",
+            "qs": "CH",
+            "as": "TL"
+        }
+    },
+    "profile": {
+        "title": "Hồ sơ cá nhân",
+        "tab": {
+            "main": "Thông tin chính",
+            "changePassword": "Đổi mật khẩu",
+            "history": "Lịch sử"
+        }
+    },
+    "history": {
+        "id": "Mã",
+        "quizName": "Tên bài kiểm tra",
+        "totalQuestions": "Tổng số câu hỏi",
+        "totalCorrect": "Số câu đúng",
+        "date": "Ngày làm bài",
+        "noData": "Không tìm thấy dữ liệu"
+    },
+    "changePassword": {
+        "currentPassword": "Mật khẩu hiện tại",
+        "currentPasswordPlaceholder": "Nhập mật khẩu hiện tại",
+        "newPassword": "Mật khẩu mới",
+        "newPasswordPlaceholder": "Nhập mật khẩu mới",
+        "confirmPassword": "Xác nhận mật khẩu mới",
+        "confirmPasswordPlaceholder": "Xác nhận lại mật khẩu",
+        "confirmButton": "Xác nhận",
+        "confirmError": "Mật khẩu xác nhận không trùng khớp với mật khẩu mới"
+    },
+    "userInfo": {
+        "title": "Thông tin người dùng",
+        "username": "Tên người dùng:",
+        "upload": "Tải ảnh người dùng:",
+        "chooseFile": "Chọn tệp",
+        "hasImage": "Người dùng đã có ảnh! Nhấn vào đây nếu bạn muốn thay đổi!!!",
+        "update": "Cập nhật"
+    },
+    "showAnswer": {
+        "title": "Câu trả lời đúng:",
+        "questionNumber": "Câu hỏi số {{number}}",
+        "noQuestion": "Không có câu hỏi nào.",
+        "close": "Đóng"
+    }
+
+
+
+
+
+}

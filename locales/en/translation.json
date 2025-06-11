@@ -1,0 +1,280 @@
+{
+    "homepage": {
+        "title1": "Create quizzes your way",
+        "title2" : "A great quiz gets everyone involved – build yours today!",
+        "title3" : {
+            "login" : "Start creating - it's free!",
+            "doing-quiz": "Take Quiz Now"
+        }
+    },
+    "questions" : {
+        "title": "Manage Questions",
+        "selectQuiz" : "Select Quiz: ",
+        "addQuestions" : "Add questions: ",
+        "descriptionPlaceholder": "Create Your Description",
+        "descriptionLabel" : "Create Description For Your Question",
+        "noFile" : "No file is uploaded",
+        "answer" : "Answer {{number}}",
+        "save" : "Save Questions"
+    },
+    "assign": {
+        "selectQuiz": "Select Quiz:",
+        "selectUser": "Select User:",
+        "assignButton": "Assign"
+    },
+    "managequiz": {
+        "header": "Manage Quizzes",
+        "addNewQuiz": "Add New Quiz",
+        "nameQuiz": "Quiz Name",
+        "description": "Description",
+        "uploadImage": "Upload Image",
+        "save": "Save",
+        "placeholder": {
+        "quizName": "Your Quiz Name...",
+        "description": "Create Your Description",
+        "quizType": "Quiz type..."
+        },
+        "updateQA": "Update Q/A Quizzes",
+        "assignToUsers": "Assign to User"
+    },
+    "modalDeleteQuiz": {
+        "title": "Confirm Delete This Quiz?",
+        "body": "Are you sure to delete the quiz which you selected ?",
+        "cancel": "Cancel",
+        "confirm": "Confirm"
+    },
+    "modalUpdateQuiz": {
+        "title": "Update a quiz",
+        "id": "ID",
+        "name": "Name",
+        "description": "Description",
+        "type": "Type",
+        "easy": "EASY",
+        "medium": "MEDIUM",
+        "hard": "HARD",
+        "upload": "Upload File Image",
+        "preview": "Preview Image",
+        "close": "Close",
+        "save": "Save"
+    },
+    "quizQA": {
+        "selectQuiz": "Select Quiz:",
+        "addQuestions": "Add questions:",
+        "descriptionForQuestion": "Create Description For Your Question ",
+        "noFile": "No file is uploaded",
+        "answerNumber": "Answer ",
+        "saveQuestions": "Save Questions"
+    },
+    "tableQuiz": {
+        "title": "List Quizzes",
+        "id": "ID",
+        "name": "Name",
+        "description": "Description",
+        "type": "Type",
+        "actions": "Actions",
+        "edit": "Edit",
+        "delete": "Delete"
+    },
+    "manageUser": {
+        "title": "Manage User",
+        "addNewUser": "Add new users"
+    },
+    "modalCreateUser": {
+        "title": "Add new user",
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "role": "Role",
+        "roleUser": "USER",
+        "roleAdmin": "ADMIN",
+        "uploadFileImage": "Upload File Image",
+        "previewImage": "Preview Image",
+        "close": "Close",
+        "save": "Save"
+    },
+    "modalDeleteUser": {
+        "title": "Confirm Delete This User?",
+        "body": "Are you sure to delete the user who you selected ",
+        "cancel": "Cancel",
+        "confirm": "Confirm"
+    },
+    "modalUpdateUser": {
+        "title": "Update a user",
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "role": "Role",
+        "optionUser": "USER",
+        "optionAdmin": "ADMIN",
+        "upload": "Upload File Image",
+        "preview": "Preview Image",
+        "close": "Close",
+        "save": "Save"
+    },
+    "view_user": {
+        "title": "View a user",
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "role": "Role",
+        "user": "USER",
+        "admin": "ADMIN",
+        "upload": "Upload File Image",
+        "preview": "Preview Image",
+        "close": "Close"
+    },
+    "table_user": {
+        "id": "ID",
+        "username": "Username",
+        "email": "Email",
+        "role": "Role",
+        "action": "Action",
+        "view": "View",
+        "update": "Update",
+        "delete": "Delete",
+        "no_data": "No data found"
+    },
+    "table_user_paginate": {
+        "id": "ID",
+        "username": "Username",
+        "email": "Email",
+        "role": "Role",
+        "action": "Action",
+        "view": "View",
+        "update": "Update",
+        "delete": "Delete",
+        "no_data": "No data found",
+        "pagination_next": "Next >",
+        "pagination_previous": "< Previous"
+    },
+    "sidebar": {
+        "logo": "AVICI QUIZ",
+        "main": "Main",
+        "dashboard": "Dashboard",
+        "features": "Features",
+        "manageUsers": "Manage Users",
+        "manageQuizzes": "Manage Quizzes",
+        "manageQuestions": "Manage Questions"
+    },
+    "login": {
+        "noAccount": "Don't have an account yet?",
+        "signUp": "Sign up",
+        "title": "AVICI QUIZ",
+        "welcome": "Hello, who's this?",
+        "email": "Email",
+        "password": "Password",
+        "forgotPassword": "Forgot password?",
+        "loginBtn": "Login to AVICI QUIZ",
+        "backHome": "Go to homepage"
+    },
+    "register": {
+        "haveAccount": "Already have an account?",
+        "login": "Login",
+        "title": "AVICI QUIZ",
+        "welcome": "Start your journey?",
+        "email": "Email",
+        "password": "Password",
+        "username": "Username",
+        "createAccount": "Create my free account",
+        "goHome": "Go to Homepage"
+    },
+    "header": {
+        "brand": "AVICI QUIZ",
+        "home": "Home",
+        "users": "Users",
+        "admin": "Admin",
+        "login": "Log in",
+        "signup": "Sign up",
+        "settings": "Settings",
+        "profile": "Profile",
+        "logout": "Log out"
+    },
+    "detailQuiz": {
+        "title": "Quiz",
+        "prev": "Prev",
+        "next": "Next",
+        "finish": "Finish",
+        "error": "Something went wrong!",
+        "home": "Home",
+        "user" : "User",
+        "quiz" : "Quiz"
+    },
+    "listQuiz": {
+        "title": "Quiz",
+        "start": "Start Now",
+        "noQuiz": "You don't have any quiz now..."
+    },
+    "modalResult": {
+        "title": "Your Result...",
+        "totalQuestions": "Total Questions:",
+        "correctAnswers": "Total Correct Answers:",
+        "showAnswers": "Show Answers",
+        "close": "Close"
+    },
+    "question": {
+        "title": "Question",
+        "imageTitle": "Question Image"
+    },
+    "layout": {
+        "notFound": "404. Not found data with your current URL"    
+    },
+    "dashboard": {
+        "title": "Analytics Dashboard",
+        "totalUsers": "Total Users",
+        "totalQuizzes": "Total Quizzes",
+        "totalQuestions": "Total Questions",
+        "totalAnswers": "Total Answers",
+        "chart": {
+            "quizzes": "Quizzes",
+            "questions": "Questions",
+            "answers": "Answers",
+            "qz": "Qz",
+            "qs": "Qs",
+            "as": "As"
+        }
+    },
+    "profile": {
+        "title": "Profile",
+        "tab": {
+            "main": "Main Info",
+            "changePassword": "Change Password",
+            "history": "History"
+        }
+    },
+    "history": {
+        "id": "ID",
+        "quizName": "Quiz Name",
+        "totalQuestions": "Total Questions",
+        "totalCorrect": "Total Correct",
+        "date": "Date",
+        "noData": "No data found"
+    },
+    "changePassword": {
+        "currentPassword": "Current Password",
+        "currentPasswordPlaceholder": "Enter the current password",
+        "newPassword": "New Password",
+        "newPasswordPlaceholder": "Enter the new password",
+        "confirmPassword": "Confirm New Password",
+        "confirmPasswordPlaceholder": "Confirm the password",
+        "confirmButton": "Confirm",
+        "confirmError": "The confirm password does not match the new password"
+    },
+    "userInfo": {
+        "title": "User Profile Information",
+        "username": "Username:",
+        "upload": "Upload User Image:",
+        "chooseFile": "Choose File",
+        "hasImage": "User had image! Click here if you would like to change!!!",
+        "update": "Update"
+    },
+    "showAnswer": {
+        "title": "Correct Answers:",
+        "questionNumber": "Question {{number}}",
+        "noQuestion": "No questions available.",
+        "close": "Close"
+    }
+
+
+
+
+}
