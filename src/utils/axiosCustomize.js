@@ -13,7 +13,7 @@ trickleSpeed: 100
 
 
 const instance = axios.create({
-    baseURL: 'http://localhost:8081/',
+    baseURL: 'https://backend-avici-quiz.onrender.com',
 });
 
 // Add a request interceptor
